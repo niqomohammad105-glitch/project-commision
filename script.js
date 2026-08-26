@@ -1,3 +1,13 @@
+// Menghilangkan Loading Screen saat web selesai dimuat
+window.addEventListener('load', function() {
+    const loader = document.getElementById('loading-screen');
+    if (loader) {
+        setTimeout(() => {
+            loader.classList.add('fade-out');
+        }, 500);
+    }
+});
+
 const orderForm = document.getElementById('orderForm');
 const namaPembeliInput = document.getElementById('namaPembeli');
 const pilihanPaketInput = document.getElementById('pilihanPaket');
@@ -13,6 +23,8 @@ function formatRupiah(angka) {
 }
 
 function hitungTotal() {
+    if (!pilihanPaketInput || !jumlahBarangInput) return;
+    
     const hargaPaket = parseInt(pilihanPaketInput.value);
     const jumlahBarang = parseInt(jumlahBarangInput.value);
 
