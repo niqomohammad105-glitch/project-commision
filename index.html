@@ -6,6 +6,7 @@
     <title>2D Illustration | Commission</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script>if (localStorage.getItem('theme') === 'light') document.documentElement.classList.add('light-mode');</script>
 </head>
 <body>
     <div id="loading-screen"><div class="loader-ring"></div><div class="loader-text">STUDIO</div></div>
@@ -26,7 +27,6 @@
 
         <!-- Hero Section -->
         <div class="glass-panel hero">
-            <!-- STATUS ANTREAN (QUEUE BADGE) BARU -->
             <div class="queue-badge reveal">
                 <span class="pulse-dot"></span> Open Commission: 3/5 Slots Available
             </div>
@@ -117,7 +117,6 @@
                     <label for="jumlahBarang" style="font-weight: 300; font-size: 0.9rem;">Jumlah Karakter:</label><br>
                     <input type="number" id="jumlahBarang" min="1" value="1" required class="form-input">
                 </div>
-                <!-- KOLOM LINK REFERENSI BARU -->
                 <div>
                     <label for="linkReferensi" style="font-weight: 300; font-size: 0.9rem;">Link Referensi Karakter (G-Drive/Pinterest dll):</label><br>
                     <input type="url" id="linkReferensi" placeholder="https://..." class="form-input">
@@ -139,15 +138,39 @@
             <div class="faq-container">
                 <div class="faq-item reveal">
                     <button class="faq-question">Apakah semua paket sudah termasuk full color?</button>
-                    <div class="faq-answer"><p>Ya, benar! Seluruh paket yang tersedia sudah termasuk ilustrasi berwarna penuh (Full Color) dengan resolusi tinggi (300dpi).</p></div>
+                    <div class="faq-answer">
+                        <p>Ya, benar! Seluruh paket yang tersedia (Chibi, Half Body, maupun Full Body) sudah termasuk ilustrasi berwarna penuh (Full Color) dengan resolusi tinggi (300dpi).</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question">Berapa lama estimasi waktu pengerjaan?</button>
+                    <div class="faq-answer">
+                        <p>Proses menggambar biasanya memakan waktu sekitar 3 hingga 7 hari kerja, tergantung antrean dan kerumitan desain karakter Anda.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question">Apa saja yang didapatkan setelah pesanan selesai?</button>
+                    <div class="faq-answer">
+                        <p>Anda akan mendapatkan file hasil ilustrasi digital beresolusi tinggi (format PNG/JPG transparan maupun dengan background) tanpa tanda air (watermark).</p>
+                    </div>
                 </div>
                 <div class="faq-item reveal">
                     <button class="faq-question">Bagaimana sistem revisinya?</button>
-                    <div class="faq-answer"><p>Revisi besar dilakukan pada tahap sketsa kasar. Setelah masuk tahap lineart dan pewarnaan, hanya menerima revisi minor.</p></div>
+                    <div class="faq-answer">
+                        <p>Revisi besar dilakukan pada tahap sketsa kasar. Setelah ilustrasi masuk tahap lineart dan pewarnaan dasar, kami hanya menerima revisi minor sesuai kuota paket.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question">Apakah hasil gambar bisa digunakan untuk komersial?</button>
+                    <div class="faq-answer">
+                        <p>Harga standar yang tertera di website khusus untuk penggunaan pribadi (Personal Use). Untuk lisensi Commercial Use, akan dikenakan penyesuaian biaya tambahan.</p>
+                    </div>
                 </div>
                 <div class="faq-item reveal">
                     <button class="faq-question">Bagaimana alur pembayarannya?</button>
-                    <div class="faq-answer"><p>Isi form, scan QRIS di halaman invoice, lalu klik konfirmasi untuk mengirim bukti ke WhatsApp.</p></div>
+                    <div class="faq-answer">
+                        <p>Isi form, scan QRIS di halaman invoice, lalu klik konfirmasi untuk mengirim bukti transfer beserta referensi karakter Anda via WhatsApp (085168655896).</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -157,6 +180,7 @@
         </footer>
     </div>
 
+    <!-- Modal & Toast -->
     <div id="imageModal" class="modal-hidden">
         <div class="modal-backdrop" id="modalBackdrop"></div>
         <div class="modal-content">
@@ -165,7 +189,6 @@
         </div>
     </div>
     <div id="toastNotification" class="toast-hidden">Pesan Notifikasi</div>
-    
     <script src="script.js"></script>
 </body>
 </html>
