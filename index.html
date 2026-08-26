@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jasa Commission | Nama Kreator</title>
+    <style>
+        /* Pengaturan Dasar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Navigasi */
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+        nav a:hover {
+            color: #3498db;
+        }
+
+        /* Bagian Hero (Sambutan) */
+        .hero {
+            text-align: center;
+            padding: 5rem 1rem;
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://via.placeholder.com/1920x600') center/cover;
+            color: white;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: #3498db;
+            color: white;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #2980b9;
+        }
+
+        /* Desain Bagian (Section) */
+        .section {
+            padding: 4rem 5%;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+            color: #2c3e50;
+        }
+
+        /* Grid Daftar Harga */
+        .pricing-grid {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            width: 320px;
+            text-align: center;
+            border: 1px solid #eee;
+        }
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #3498db;
+            margin-bottom: 1.5rem;
+        }
+        .card ul {
+            list-style: none;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+        .card ul li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        .card ul li::before {
+            content: '✓';
+            color: #27ae60;
+            margin-right: 10px;
+        }
+
+        /* Syarat & Ketentuan (TOS) */
+        .tos-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .tos-box ul {
+            margin-left: 1.5rem;
+        }
+        .tos-box li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 5%;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigasi -->
+    <header>
+        <div class="logo">NamaKreator.</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#harga">Harga</a></li>
+                <li><a href="#tos">TOS</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Open Commission 2026</h1>
+        <p>Menerima jasa ilustrasi karakter, desain logo, dan aset digital.</p>
+        <a href="#kontak" class="btn">Pesan Sekarang</a>
+    </section>
+
+    <!-- Bagian Harga -->
+    <section id="harga" class="section">
+        <h2 class="section-title">Daftar Harga</h2>
+        <div class="pricing-grid">
+            
+            <!-- Paket 1 -->
+            <div class="card">
+                <h3>Sketsa / Lineart</h3>
+                <div class="price">Rp 50.000</div>
+                <ul>
+                    <li>1 Karakter (Half Body)</li>
+                    <li>Resolusi Tinggi (300dpi)</li>
+                    <li>Revisi 2x</li>
+                    <li>Waktu pengerjaan 1-2 Hari</li>
+                </ul>
+                <a href="#kontak" class="btn">Pilih Paket</a>
+            </div>
+
+            <!-- Paket 2 -->
+            <div class="card">
+                <h3>Full Color</h3>
+                <div class="price">Rp 150.000</div>
+                <ul>
+                    <li>1 Karakter (Full Body)</li>
+                    <li>Background Sederhana</li>
+                    <li>Revisi 3x</li>
+                    <li>Waktu pengerjaan 3-5 Hari</li>
+                </ul>
+                <a href="#kontak" class="btn">Pilih Paket</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Bagian Syarat & Ketentuan (TOS) -->
+    <section id="tos" class="section" style="background-color: #ecf0f1;">
+        <h2 class="section-title">Syarat & Ketentuan (T.O.S)</h2>
+        <div class="tos-box">
+            <p><strong>Sebelum memesan, harap baca dengan saksama:</strong></p>
+            <br>
+            <ul>
+                <li><strong>Pembayaran:</strong> DP minimal 50% dibayar di awal setelah sketsa disetujui. Pelunasan dilakukan sebelum file asli dikirim.</li>
+                <li><strong>Revisi:</strong> Revisi mayor (ganti pose/konsep) hanya dilakukan pada tahap sketsa. Setelah tahap pewarnaan, hanya menerima revisi minor (ganti warna/detail kecil).</li>
+                <li><strong>Hak Cipta:</strong> Hasil komisi hanya untuk penggunaan pribadi (Personal Use). Untuk lisensi komersial (Commercial Use), harga akan dikali 2.</li>
+                <li><strong>Yang Tidak Diterima (Do Not Draw):</strong> NSFW, Mecha rumit, Gore ekstrem.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer / Kontak -->
+    <footer id="kontak">
+        <h2>Siap untuk memesan?</h2>
+        <p style="margin: 1rem 0;">Hubungi saya melalui platform di bawah ini:</p>
+        <p>
+            Email: <strong>kreator@email.com</strong> | 
+            Instagram: <strong>@NamaKreator</strong> | 
+            Twitter/X: <strong>@NamaKreator</strong>
+        </p>
+        <br>
+        <p style="font-size: 0.9rem; color: #bdc3c7;">&copy; 2026 NamaKreator. Semua hak dilindungi.</p>
+    </footer>
+
+</body>
+</html>
