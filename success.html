@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader-ring"></div>
+        <div class="loader-text">kreator.</div>
+    </div>
+
     <div class="blob blob-2" style="top: -10%; left: -10%;"></div>
     <div class="blob blob-3" style="bottom: 10%; right: 10%;"></div>
 
@@ -21,5 +27,14 @@
             <a href="index.html" class="btn-neon btn-return" style="font-size: 0.9rem;">Kembali ke Beranda</a>
         </div>
     </div>
+
+    <script>
+        // Menghilangkan Loading Screen
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loading-screen').classList.add('fade-out');
+            }, 500);
+        });
+    </script>
 </body>
 </html>
