@@ -16,7 +16,6 @@ function hitungTotal() {
     const hargaPaket = parseInt(pilihanPaketInput.value);
     const jumlahBarang = parseInt(jumlahBarangInput.value);
 
-    // Cek Keamanan: Mencegah input jumlah tidak valid
     if (jumlahBarang < 1 || isNaN(jumlahBarang)) {
         totalHargaDisplay.innerText = "Jumlah tidak valid";
         return;
@@ -26,19 +25,19 @@ function hitungTotal() {
     totalHargaDisplay.innerText = formatRupiah(total);
 }
 
-pilihanPaketInput.addEventListener('change', hitungTotal);
-jumlahBarangInput.addEventListener('input', hitungTotal);
+if (pilihanPaketInput && jumlahBarangInput) {
+    pilihanPaketInput.addEventListener('change', hitungTotal);
+    jumlahBarangInput.addEventListener('input', hitungTotal);
+}
 
-// Ekosistem Checkout: Mengarahkan ke halaman Invoice
-orderForm.addEventListener('submit', function(event) {
-    event.preventDefault(); 
-
-    // encodeURIComponent digunakan untuk mengamankan spasi/karakter khusus pada URL
-    const nama = encodeURIComponent(namaPembeliInput.value.trim());
-    const paketText = encodeURIComponent(pilihanPaketInput.options[pilihanPaketInput.selectedIndex].text);
-    const jumlah = encodeURIComponent(jumlahBarangInput.value);
-    const total = encodeURIComponent(parseInt(pilihanPaketInput.value) * parseInt(jumlah));
-
-    // Pindah halaman ke invoice.html sambil membawa data pembeli
-    window.location.href = `invoice.html?nama=${nama}&paket=${paketText}&jumlah=${jumlah}&total=${total}`;
-});
+if (orderForm) {
+    orderForm.addEventListener('submit', function(event) {
+        event.preventDefault(); 
+        const nama = encodeURIComponent(namaPembeliInput.value.trim());
+        const paketText = encodeURIComponent(pilihanPaketInput.options[pilihanPaketInput.selectedIndex].text);
+        const jumlah = encodeURIComponent(jumlahBarangInput.value);
+        const total = encodeURIComponent(parseInt(pilihanPaketInput.value) * parseInt(jumlahBarangInput.value));
+        
+        window.location.href = `invoice.html?nama=${nama}&paket=${paketText}&jumlah=${jumlah}&total=${total}`;
+    });
+}
