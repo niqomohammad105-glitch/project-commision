@@ -1,12 +1,6 @@
 /* PENGATURAN DASAR & TEMA "PURE MONOCHROME" */
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-body {
-    background-color: #000000;
-    color: #FFFFFF;
-    min-height: 100vh;
-    overflow-x: hidden;
-    position: relative;
-}
+body { background-color: #000000; color: #FFFFFF; min-height: 100vh; overflow-x: hidden; position: relative; }
 a { text-decoration: none; color: inherit; }
 
 /* LOADING SCREEN (SILVER & WHITE) */
@@ -30,16 +24,10 @@ a { text-decoration: none; color: inherit; }
 /* LAYOUT & DEEP GLASS PANEL */
 .container { max-width: 1000px; margin: 0 auto; padding: 2rem; position: relative; z-index: 1; }
 .glass-panel {
-    background: rgba(18, 18, 18, 0.6); 
-    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    background: rgba(18, 18, 18, 0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9); padding: 2.5rem; margin-bottom: 2rem;
-    animation: fadeInUp 0.8s ease-out forwards;
 }
-header.glass-panel { animation-delay: 0.1s; } .hero.glass-panel { animation-delay: 0.3s; }
-#harga { animation-delay: 0.5s; opacity: 0; animation: fadeInUp 0.8s ease-out 0.5s forwards; }
-#pemesanan.glass-panel { animation-delay: 0.7s; }
-
 header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; padding: 1rem 2rem; }
 .logo { font-size: 1.5rem; font-weight: 900; letter-spacing: 1px; }
 nav ul { list-style: none; display: flex; gap: 2rem; }
@@ -57,7 +45,7 @@ nav a:hover { opacity: 1; color: #FFFFFF; }
 .hero h1 { font-size: 4rem; font-weight: 900; line-height: 1.1; margin-bottom: 1rem; color: #FFFFFF; }
 .hero p { font-size: 1.1rem; font-weight: 300; opacity: 0.6; margin-bottom: 2.5rem; max-width: 500px; color: #FFFFFF; }
 
-/* GRID PORTOFOLIO & 3D TILT (MINIMALIST) */
+/* GRID PORTOFOLIO & 3D TILT */
 .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
 .portfolio-item { 
     padding: 1rem; display: flex; justify-content: center; align-items: center; background: rgba(25, 25, 25, 0.5);
@@ -66,17 +54,14 @@ nav a:hover { opacity: 1; color: #FFFFFF; }
 .portfolio-item:hover { border-color: #FFFFFF; box-shadow: 0 0 20px rgba(255, 255, 255, 0.1); }
 .portfolio-img { width: 100%; border-radius: 12px; object-fit: cover; pointer-events: none; border: 1px solid rgba(255,255,255,0.05); }
 
-/* MODAL LIGHTBOX (DARK & CLEAN) */
+/* MODAL LIGHTBOX */
 #imageModal {
     position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
     z-index: 10000; display: flex; justify-content: center; align-items: center;
     opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
 }
 #imageModal.modal-show { opacity: 1; pointer-events: auto; }
-.modal-backdrop {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(10px);
-}
+.modal-backdrop { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(10px); }
 .modal-content {
     position: relative; z-index: 10001; max-width: 90%; max-height: 90vh;
     transform: scale(0.95); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -106,11 +91,9 @@ nav a:hover { opacity: 1; color: #FFFFFF; }
 .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
 .faq-answer p { padding-bottom: 1rem; font-size: 0.9rem; font-weight: 300; opacity: 0.6; color: #FFFFFF; }
 
-/* TOMBOL PUTIH, KARTU HARGA & FORM */
+/* TOMBOL PUTIH & FORM */
 .btn-solid {
-    display: inline-block; 
-    background: #FFFFFF; 
-    color: #000000; 
+    display: inline-block; background: #FFFFFF; color: #000000; 
     font-family: 'Poppins', sans-serif; font-weight: 700; padding: 1rem 3rem; border-radius: 8px; 
     text-transform: uppercase; letter-spacing: 1.5px; transition: all 0.3s ease; 
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1); 
@@ -133,15 +116,7 @@ nav a:hover { opacity: 1; color: #FFFFFF; }
 .total-box { padding: 1.5rem; background: rgba(255, 255, 255, 0.05); border-left: 4px solid #FFFFFF; border-radius: 8px; }
 footer { text-align: center; padding: 2rem; opacity: 0.3; font-size: 0.8rem; font-weight: 300; }
 
-/* ANIMASI & TOAST NOTIFICATION */
-@keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
-
-/* Efek Hover Tombol Putih Minimalist */
-.btn-hero:hover, .btn-action:hover { 
-    transform: translateY(-3px); 
-    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3); 
-    background: #E2E8F0; 
-}
+.btn-hero:hover, .btn-action:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3); background: #E2E8F0; }
 .btn-return { background: #FFFFFF; color: #000000; box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1); }
 .btn-return:hover { background: #E2E8F0; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3); }
 
@@ -154,3 +129,16 @@ footer { text-align: center; padding: 2rem; opacity: 0.3; font-size: 0.8rem; fon
 }
 .toast-hidden { transform: translateX(120%); opacity: 0; pointer-events: none; }
 .toast-show { transform: translateX(0); opacity: 1; border-left: 5px solid #FFFFFF; }
+
+/* =========================================
+   SCROLL REVEAL ANIMATION (TEXT & CARDS)
+   ========================================= */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
