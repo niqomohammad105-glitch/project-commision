@@ -4,7 +4,7 @@ window.addEventListener('load', function() {
     if (loader) { setTimeout(() => { loader.classList.add('fade-out'); }, 500); }
 });
 
-// 2. 3D Tilt Effect & Lightbox Modal (UI Interactions)
+// 2. 3D Tilt Effect & Lightbox Modal
 const portfolioCards = document.querySelectorAll('.portfolio-item');
 const modal = document.getElementById('imageModal');
 const modalImg = document.getElementById('modalImage');
@@ -12,7 +12,6 @@ const closeModalBtn = document.getElementById('closeModal');
 const modalBackdrop = document.getElementById('modalBackdrop');
 
 portfolioCards.forEach(card => {
-    // Interaksi 3D Tilt
     card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
@@ -31,7 +30,6 @@ portfolioCards.forEach(card => {
     
     card.addEventListener('mouseenter', () => { card.style.transition = 'none'; });
 
-    // Interaksi Lightbox Modal
     card.addEventListener('click', () => {
         const imgSrc = card.querySelector('.portfolio-img').src;
         if(modalImg) {
@@ -50,7 +48,6 @@ function closeModal() {
 if(closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
 if(modalBackdrop) modalBackdrop.addEventListener('click', closeModal);
 
-// Keamanan Aksesibilitas: Menutup modal dengan tombol Escape
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal && modal.classList.contains('modal-show')) closeModal();
 });
@@ -95,7 +92,6 @@ function hitungTotal() {
     const hargaPaket = parseInt(pilihanPaketInput.value);
     const jumlahBarang = parseInt(jumlahBarangInput.value);
 
-    // Mencegah eksploitasi jumlah minus
     if (jumlahBarang < 1 || isNaN(jumlahBarang)) {
         totalHargaDisplay.innerText = "Tidak valid";
         return;
@@ -112,10 +108,7 @@ if (pilihanPaketInput && jumlahBarangInput) {
 if (orderForm) {
     orderForm.addEventListener('submit', function(event) {
         event.preventDefault(); 
-        
         let namaRaw = namaPembeliInput.value.trim();
-        
-        // AUDIT KEAMANAN: Memfilter karakter berbahaya untuk mencegah XSS
         let namaAman = namaRaw.replace(/[^a-zA-Z0-9 ]/g, "");
 
         if (namaAman === "") {
@@ -131,3 +124,22 @@ if (orderForm) {
         window.location.href = `invoice.html?nama=${nama}&paket=${paketText}&jumlah=${jumlah}&total=${total}`;
     });
 }
+
+// 6. SCROLL REVEAL ANIMATION (INTERSECTION OBSERVER)
+const revealElements = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            observer.unobserve(entry.target);
+        }
+    });
+}, {
+    root: null,
+    threshold: 0.15,
+    rootMargin: "0px 0px -50px 0px"
+});
+
+revealElements.forEach(el => {
+    revealObserver.observe(el);
+});
