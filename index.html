@@ -16,7 +16,7 @@
 
     <div class="container">
         <!-- Header -->
-        <header class="glass-panel" style="padding: 1rem 2rem; margin-bottom: 4rem;">
+        <header class="glass-panel reveal" style="padding: 1rem 2rem; margin-bottom: 4rem;">
             <div class="logo">kreator.</div>
             <nav>
                 <ul>
@@ -29,22 +29,22 @@
 
         <!-- Hero Section -->
         <div class="glass-panel hero">
-            <h1>Bring your<br><span class="text-gradient">toys to life.</span></h1>
-            <p>Menerima jasa 3D cartoon render eksklusif dengan gaya toy figure estetik, material plastik matte, dan pencahayaan studio premium.</p>
-            <a href="#pemesanan" class="btn-solid btn-hero">Pesan Sekarang</a>
+            <h1 class="reveal">Bring your<br><span class="text-gradient">toys to life.</span></h1>
+            <p class="reveal">Menerima jasa 3D cartoon render eksklusif dengan gaya toy figure estetik, material plastik matte, dan pencahayaan studio premium.</p>
+            <a href="#pemesanan" class="btn-solid btn-hero reveal">Pesan Sekarang</a>
         </div>
 
         <!-- Galeri Portofolio -->
         <div id="portofolio" style="margin-bottom: 4rem;">
-            <h2 class="section-title">Latest Renders</h2>
+            <h2 class="section-title reveal">Latest Renders</h2>
             <div class="portfolio-grid">
-                <div class="glass-panel portfolio-item">
+                <div class="glass-panel portfolio-item reveal">
                     <img src="https://via.placeholder.com/300x300/111111/FFFFFF?text=Toy+Render+1" alt="Artwork 1" class="portfolio-img">
                 </div>
-                <div class="glass-panel portfolio-item">
+                <div class="glass-panel portfolio-item reveal">
                     <img src="https://via.placeholder.com/300x300/111111/FFFFFF?text=Toy+Render+2" alt="Artwork 2" class="portfolio-img">
                 </div>
-                <div class="glass-panel portfolio-item">
+                <div class="glass-panel portfolio-item reveal">
                     <img src="https://via.placeholder.com/300x300/111111/FFFFFF?text=Toy+Render+3" alt="Artwork 3" class="portfolio-img">
                 </div>
             </div>
@@ -52,29 +52,42 @@
 
         <!-- Bagian Harga -->
         <div id="harga">
-            <h2 class="section-title">Commission Packages</h2>
+            <h2 class="section-title reveal">Commission Packages</h2>
             <div class="pricing-grid">
-                <div class="glass-panel price-card">
+                <div class="glass-panel price-card reveal">
                     <div>
-                        <h3>Basic Render</h3>
-                        <div class="price">Rp 150k</div>
+                        <h3>Chibi Style</h3>
+                        <div class="price">Rp 25k</div>
                         <ul>
-                            <li>1 Karakter (Half Body)</li>
-                            <li>Solid Matte Material</li>
-                            <li>Resolusi 2K</li>
+                            <li>1 Karakter (Chibi Cute)</li>
+                            <li>Full Color Matte Material</li>
+                            <li>Resolusi Tinggi (2K)</li>
                             <li>Revisi 2x</li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="glass-panel price-card premium-card">
+                <div class="glass-panel price-card reveal">
                     <div>
-                        <h3>Premium Studio</h3>
-                        <div class="price text-gradient">Rp 350k</div>
+                        <h3>Half Body</h3>
+                        <div class="price">Rp 50k</div>
+                        <ul>
+                            <li>1 Karakter (Half Body)</li>
+                            <li>Full Color Matte Material</li>
+                            <li>Resolusi Tinggi (2K)</li>
+                            <li>Revisi 2x</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="glass-panel price-card premium-card reveal">
+                    <div>
+                        <h3>Full Body</h3>
+                        <div class="price text-gradient">Rp 75k</div>
                         <ul>
                             <li>1 Karakter (Full Body)</li>
-                            <li>Custom Studio Backdrop</li>
-                            <li>Resolusi 4K (High-End)</li>
+                            <li>Full Color + Studio Backdrop</li>
+                            <li>Resolusi High-End (4K)</li>
                             <li>Revisi 3x</li>
                         </ul>
                     </div>
@@ -83,7 +96,7 @@
         </div>
 
         <!-- Form Pemesanan -->
-        <div id="pemesanan" class="glass-panel" style="margin-top: 4rem;">
+        <div id="pemesanan" class="glass-panel reveal" style="margin-top: 4rem;">
             <h2 class="section-title" style="text-align: left; font-size: 1.5rem;">Order Form</h2>
             <form id="orderForm" style="display: flex; flex-direction: column; gap: 1.5rem;">
                 <div>
@@ -93,8 +106,9 @@
                 <div>
                     <label for="pilihanPaket" style="font-weight: 300; font-size: 0.9rem;">Pilih Paket 3D:</label><br>
                     <select id="pilihanPaket" required class="form-input">
-                        <option value="150000" style="color: black;">Basic Render - Rp 150.000</option>
-                        <option value="350000" style="color: black;">Premium Studio - Rp 350.000</option>
+                        <option value="25000" style="color: black;">Chibi Style - Rp 25.000</option>
+                        <option value="50000" style="color: black;">Half Body - Rp 50.000</option>
+                        <option value="75000" style="color: black;">Full Body - Rp 75.000</option>
                     </select>
                 </div>
                 <div>
@@ -103,7 +117,7 @@
                 </div>
                 <div class="total-box">
                     <h3 style="font-weight: 300; font-size: 1rem;">Total Pembayaran: 
-                        <span id="totalHarga" style="font-weight: 700; color: #FFFFFF; font-size: 1.5rem; display: block; margin-top: 0.5rem;">Rp 150.000</span>
+                        <span id="totalHarga" style="font-weight: 700; color: #FFFFFF; font-size: 1.5rem; display: block; margin-top: 0.5rem;">Rp 25.000</span>
                     </h3>
                 </div>
                 <button type="submit" class="btn-solid btn-action" style="border: none; cursor: pointer; margin-top: 1rem; width: 100%;">
@@ -113,43 +127,43 @@
         </div>
 
         <!-- FAQ -->
-        <div id="faq" class="glass-panel" style="margin-top: 4rem; margin-bottom: 4rem;">
+        <div id="faq" class="glass-panel reveal" style="margin-top: 4rem; margin-bottom: 4rem;">
             <h2 class="section-title" style="text-align: left; font-size: 1.5rem;">F.A.Q</h2>
             <div class="faq-container">
-                <div class="faq-item">
+                <div class="faq-item reveal">
+                    <button class="faq-question">Apakah semua paket sudah termasuk full color?</button>
+                    <div class="faq-answer">
+                        <p>Ya, benar! Seluruh paket yang tersedia (Chibi, Half Body, maupun Full Body) sudah termasuk pewarnaan penuh (Full Color) dengan material plastik matte berkualitas tinggi.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
                     <button class="faq-question">Berapa lama estimasi waktu pengerjaan (rendering)?</button>
                     <div class="faq-answer">
-                        <p>Proses pengerjaan biasanya memakan waktu sekitar 5 hingga 10 hari kerja, tergantung pada antrean yang ada serta tingkat kerumitan desain karakter Anda[cite: 6].</p>
+                        <p>Proses pengerjaan biasanya memakan waktu sekitar 3 hingga 7 hari kerja, tergantung pada antrean yang ada serta tingkat kerumitan desain karakter Anda.</p>
                     </div>
                 </div>
-                <div class="faq-item">
+                <div class="faq-item reveal">
                     <button class="faq-question">Apa saja yang didapatkan setelah pesanan selesai?</button>
                     <div class="faq-answer">
-                        <p>Anda akan mendapatkan file hasil rendering akhir beresolusi tinggi (format gambar seperti PNG/JPG berkualitas 2K atau 4K tergantung paket yang dipilih) tanpa tanda air (watermark)[cite: 6].</p>
+                        <p>Anda akan mendapatkan file hasil rendering akhir beresolusi tinggi (format PNG/JPG berkualitas 2K atau 4K tergantung paket) tanpa tanda air (watermark).</p>
                     </div>
                 </div>
-                <div class="faq-item">
+                <div class="faq-item reveal">
                     <button class="faq-question">Apakah hasil render bisa digunakan untuk kebutuhan komersial?</button>
                     <div class="faq-answer">
-                        <p>Harga standar yang tertera di website khusus untuk penggunaan pribadi (Personal Use). Untuk lisensi Commercial Use, akan dikenakan penyesuaian biaya tambahan[cite: 6].</p>
+                        <p>Harga standar yang tertera di website khusus untuk penggunaan pribadi (Personal Use). Untuk lisensi Commercial Use, akan dikenakan penyesuaian biaya tambahan.</p>
                     </div>
                 </div>
-                <div class="faq-item">
-                    <button class="faq-question">Bagaimana sistem revisinya?</button>
-                    <div class="faq-answer">
-                        <p>Revisi besar dilakukan pada tahap awal, sedangkan setelah proses rendering akhir hanya menerima revisi minor sesuai kuota paket[cite: 6].</p>
-                    </div>
-                </div>
-                <div class="faq-item">
+                <div class="faq-item reveal">
                     <button class="faq-question">Bagaimana alur pemesanan dan pembayarannya?</button>
                     <div class="faq-answer">
-                        <p>Anda dapat mengisi formulir pesanan di website, melihat total tagihan pada halaman invoice, lalu melakukan konfirmasi pembayaran manual melalui WhatsApp[cite: 6].</p>
+                        <p>Anda dapat mengisi formulir pesanan di website, melihat total tagihan pada halaman invoice, lalu melakukan konfirmasi pembayaran manual melalui WhatsApp ke nomor 085168655896.</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <footer>
+        <footer class="reveal">
             &copy; 2026 Kreator 3D Studio. Pure Monochrome UI.
         </footer>
     </div>
