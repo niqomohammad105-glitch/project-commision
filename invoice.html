@@ -8,41 +8,43 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="loading-screen"><div class="loader-ring"></div><div class="loader-text">STUDIO.</div></div>
+    <div id="loading-screen"><div class="loader-ring"></div><div class="loader-text">STUDIO</div></div>
     <div class="blob blob-1"></div><div class="blob blob-2"></div>
 
     <div class="container" style="max-width: 600px; margin-top: 5rem;">
         <div class="glass-panel" style="text-align: center;">
             <h2 class="section-title" style="margin-bottom: 1rem;">Invoice Pesanan</h2>
             
-            <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px; text-align: left; margin-bottom: 2rem;">
-                <p style="margin-bottom: 0.5rem; font-weight: 300;">Halo, <strong id="invNama" style="color: #38BDF8;"></strong>!</p>
-                <p style="margin-bottom: 0.5rem; font-weight: 300;">Berikut adalah detail render Anda:</p>
+            <div style="background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 12px; text-align: left; margin-bottom: 2rem;">
+                <p style="margin-bottom: 0.5rem; font-weight: 300;">Halo, <strong id="invNama" style="color: #00E5FF;"></strong>!</p>
+                <p style="margin-bottom: 0.5rem; font-weight: 300; color: #A1A1AA;">Berikut adalah detail render Anda:</p>
                 <ul style="list-style: none; margin-top: 1rem; opacity: 0.9; font-weight: 300;">
                     <li style="margin-bottom: 0.5rem;">Paket: <span id="invPaket" style="float: right;"></span></li>
                     <li style="margin-bottom: 0.5rem;">Jumlah: <span id="invJumlah" style="float: right;"></span></li>
                     <li style="margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed rgba(255,255,255,0.2); font-weight: 700; font-size: 1.2rem;">
-                        Total Tagihan: <span id="invTotal" style="float: right; color: #818CF8;"></span>
+                        Total Tagihan: <span id="invTotal" style="float: right; color: #FF2A85;"></span>
                     </li>
                 </ul>
             </div>
 
             <div style="margin-bottom: 2rem; text-align: left;">
                 <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">Metode Pembayaran:</h3>
-                <p style="font-weight: 300; font-size: 0.9rem; opacity: 0.8;">BCA: 1234567890 a.n. Kreator Studio</p>
-                <p style="font-weight: 300; font-size: 0.9rem; opacity: 0.8;">GoPay: 081234567890</p>
+                <p style="font-weight: 300; font-size: 0.9rem; color: #A1A1AA;">BCA: 1234567890 a.n. Kreator Studio</p>
+                <p style="font-weight: 300; font-size: 0.9rem; color: #A1A1AA;">GoPay: 081234567890</p>
             </div>
 
             <button id="btnKonfirmasi" class="btn-neon btn-action" style="width: 100%; border: none; cursor: pointer;">
                 Konfirmasi Pembayaran
             </button>
             <br><br>
-            <a href="index.html" style="font-size: 0.8rem; text-decoration: underline; opacity: 0.6;">Batalkan & Kembali</a>
+            <a href="index.html" style="font-size: 0.8rem; text-decoration: underline; opacity: 0.6; display: inline-block; margin-top: 1.5rem;">Batalkan & Kembali</a>
         </div>
     </div>
 
     <script>
         window.addEventListener('load', function() { setTimeout(() => { document.getElementById('loading-screen').classList.add('fade-out'); }, 500); });
+        
+        // Menangkap data operan dari URL secara aman
         const urlParams = new URLSearchParams(window.location.search);
         const nama = urlParams.get('nama');
         const paket = urlParams.get('paket');
