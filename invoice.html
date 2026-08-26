@@ -21,10 +21,7 @@
                 <ul style="list-style: none; margin-top: 1rem; opacity: 0.9; font-weight: 300;">
                     <li style="margin-bottom: 0.5rem;">Paket: <span id="invPaket" style="float: right;"></span></li>
                     <li style="margin-bottom: 0.5rem;">Jumlah: <span id="invJumlah" style="float: right;"></span></li>
-                    
-                    <!-- BARIS BARU UNTUK LINK REFERENSI -->
                     <li style="margin-bottom: 0.5rem;">Ref: <a href="#" id="invLink" target="_blank" style="float: right; color: #3B82F6; text-decoration: underline; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"></a></li>
-                    
                     <li style="margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--glass-border); font-weight: 700; font-size: 1.2rem;">
                         Total Tagihan: <span id="invTotal" style="float: right; color: var(--text-color);"></span>
                     </li>
@@ -35,7 +32,6 @@
                 <h3 style="font-size: 1.1rem; margin-bottom: 1.5rem; font-weight: 500;">Metode Pembayaran (QRIS)</h3>
                 
                 <div style="background: #FFFFFF; padding: 15px; border-radius: 12px; display: inline-block; margin-bottom: 2rem; box-shadow: 0 10px 25px var(--glass-shadow);">
-                    <!-- GANTI URL GAMBAR INI DENGAN GAMBAR BARCODE QRIS ASLI ANDA -->
                     <img src="https://via.placeholder.com/250x250/FFFFFF/000000?text=GAMBAR+QRIS+ANDA" alt="Scan QRIS" style="width: 250px; height: 250px; object-fit: contain;">
                 </div>
 
@@ -63,7 +59,7 @@
         const paket = urlParams.get('paket');
         const jumlah = urlParams.get('jumlah');
         const total = urlParams.get('total');
-        const linkRef = urlParams.get('link'); // AMBIL LINK
+        const linkRef = urlParams.get('link');
 
         if(!nama || !total) window.location.href = 'index.html';
         const totalRupiah = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(total);
@@ -73,7 +69,6 @@
         document.getElementById('invJumlah').innerText = jumlah + ' karakter';
         document.getElementById('invTotal').innerText = totalRupiah;
         
-        // Atur link referensi
         const linkElement = document.getElementById('invLink');
         if (linkRef && linkRef !== "Tidak ada") {
             linkElement.innerText = linkRef;
@@ -85,7 +80,6 @@
         }
 
         document.getElementById('btnKonfirmasi').addEventListener('click', function() {
-            // SISIPKAN LINK REFERENSI KE WA
             const pesan = `Halo! Saya sudah melakukan pembayaran komisi 2D Illustration.%0A%0A*Atas Nama:* ${nama}%0A*Paket:* ${paket}%0A*Total Pembayaran:* ${totalRupiah}%0A*Link Referensi Karakter:* ${linkRef}%0A%0ABerikut saya lampirkan bukti transfer/scan QRIS-nya.`;
             window.open(`https://wa.me/6285168655896?text=${pesan}`, '_blank');
             window.location.href = 'success.html';
