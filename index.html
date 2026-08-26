@@ -3,80 +3,308 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invoice Pembayaran | Glassmorphism</title>
+    <title>Jasa Commission | Glassmorphism</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+    <!-- Latar Belakang Dekoratif -->
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
 
-    <div class="container" style="max-width: 600px; margin-top: 5rem;">
-        <div class="glass-panel" style="text-align: center;">
-            <h2 class="section-title" style="margin-bottom: 1rem;">Invoice Pesanan</h2>
-            
-            <!-- Tempat Data Ditampilkan -->
-            <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px; text-align: left; margin-bottom: 2rem;">
-                <p style="margin-bottom: 0.5rem; font-weight: 300;">Halo, <strong id="invNama" style="color: #00f2fe;"></strong>!</p>
-                <p style="margin-bottom: 0.5rem; font-weight: 300;">Berikut adalah detail pesanan Anda:</p>
-                <ul style="list-style: none; margin-top: 1rem; opacity: 0.9; font-weight: 300;">
-                    <li style="margin-bottom: 0.5rem;">Paket: <span id="invPaket" style="float: right;"></span></li>
-                    <li style="margin-bottom: 0.5rem;">Jumlah: <span id="invJumlah" style="float: right;"></span></li>
-                    <li style="margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed rgba(255,255,255,0.2); font-weight: 700; font-size: 1.2rem;">
-                        Total Tagihan: <span id="invTotal" style="float: right; color: #ff4b9c;"></span>
-                    </li>
+    <div class="container">
+        <!-- Header -->
+        <header class="glass-panel" style="padding: 1rem 2rem; margin-bottom: 4rem;">
+            <div class="logo">kreator.</div>
+            <nav>
+                <ul>
+                    <li><a href="#harga">Pricing</a></li>
+                    <li><a href="#pemesanan">Order</a></li>
                 </ul>
-            </div>
+            </nav>
+        </header>
 
-            <div style="margin-bottom: 2rem; text-align: left;">
-                <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">Metode Pembayaran:</h3>
-                <p style="font-weight: 300; font-size: 0.9rem; opacity: 0.8;">BCA: 1234567890 a.n. Kreator</p>
-                <p style="font-weight: 300; font-size: 0.9rem; opacity: 0.8;">GoPay: 081234567890</p>
-            </div>
-
-            <button id="btnKonfirmasi" class="btn-neon" style="width: 100%; border: none; cursor: pointer; font-family: 'Poppins', sans-serif;">
-                Konfirmasi Pembayaran
-            </button>
-            <br><br>
-            <a href="index.html" style="font-size: 0.8rem; text-decoration: underline; opacity: 0.6;">Batalkan & Kembali</a>
+        <!-- Hero Section -->
+        <div class="glass-panel hero">
+            <h1>Create<br>your vision.</h1>
+            <p>Menerima jasa ilustrasi karakter, desain aset digital, dan karya seni khusus dengan kualitas visual terbaik.</p>
+            <a href="#pemesanan" class="btn-neon">Mulai Sekarang</a>
         </div>
+
+        <!-- Bagian Harga -->
+        <div id="harga">
+            <h2 class="section-title">Packages</h2>
+            <div class="pricing-grid">
+                
+                <div class="glass-panel price-card">
+                    <div>
+                        <h3>Sketsa / Lineart</h3>
+                        <div class="price">Rp 50k</div>
+                        <ul>
+                            <li>1 Karakter (Half Body)</li>
+                            <li>Resolusi Tinggi (300dpi)</li>
+                            <li>Revisi 2x</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="glass-panel price-card" style="border: 1px solid rgba(255, 75, 156, 0.5);">
+                    <div>
+                        <h3>Full Color</h3>
+                        <div class="price">Rp 150k</div>
+                        <ul>
+                            <li>1 Karakter (Full Body)</li>
+                            <li>Background Sederhana</li>
+                            <li>Revisi 3x</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Form Pemesanan & Pembayaran -->
+        <div id="pemesanan" class="glass-panel" style="margin-top: 4rem;">
+            <h2 class="section-title" style="text-align: left; font-size: 1.5rem;">Order & Payment</h2>
+            <form id="orderForm" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                <div>
+                    <label for="namaPembeli" style="font-weight: 300; font-size: 0.9rem;">Nama Pembeli:</label><br>
+                    <input type="text" id="namaPembeli" placeholder="Masukkan nama Anda..." required class="form-input">
+                </div>
+                <div>
+                    <label for="pilihanPaket" style="font-weight: 300; font-size: 0.9rem;">Pilih Paket:</label><br>
+                    <select id="pilihanPaket" required class="form-input">
+                        <option value="50000" style="color: black;">Sketsa / Lineart - Rp 50.000</option>
+                        <option value="150000" style="color: black;">Full Color - Rp 150.000</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="jumlahBarang" style="font-weight: 300; font-size: 0.9rem;">Jumlah Karakter/Barang:</label><br>
+                    <input type="number" id="jumlahBarang" min="1" value="1" required class="form-input">
+                </div>
+                <div style="padding: 1.5rem; background: rgba(0, 242, 254, 0.1); border-left: 4px solid #00f2fe; border-radius: 8px;">
+                    <h3 style="font-weight: 300; font-size: 1rem;">Total Pembayaran: 
+                        <span id="totalHarga" style="font-weight: 700; color: #00f2fe; font-size: 1.5rem; display: block; margin-top: 0.5rem;">Rp 50.000</span>
+                    </h3>
+                </div>
+                <button type="submit" class="btn-neon" style="border: none; cursor: pointer; margin-top: 1rem; font-family: 'Poppins', sans-serif; width: 100%;">
+                    Lanjut ke Pembayaran
+                </button>
+            </form>
+        </div>
+
+        <footer>
+            &copy; 2026 NamaKreator. UI/UX Glassmorphism.
+        </footer>
     </div>
+    
+    <script src="script.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jasa Commission | Glassmorphism</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Latar Belakang Dekoratif -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
 
-    <!-- Script khusus untuk menangkap URL dan mengirim ke WA -->
-    <script>
-        // Mengambil parameter dari URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const nama = urlParams.get('nama');
-        const paket = urlParams.get('paket');
-        const jumlah = urlParams.get('jumlah');
-        const total = urlParams.get('total');
+    <div class="container">
+        <!-- Header -->
+        <header class="glass-panel" style="padding: 1rem 2rem; margin-bottom: 4rem;">
+            <div class="logo">kreator.</div>
+            <nav>
+                <ul>
+                    <li><a href="#harga">Pricing</a></li>
+                    <li><a href="#pemesanan">Order</a></li>
+                </ul>
+            </nav>
+        </header>
 
-        // Jika tidak ada data (akses langsung ke invoice.html tanpa isi form), kembalikan ke index
-        if(!nama || !total) {
-            window.location.href = 'index.html';
-        }
+        <!-- Hero Section -->
+        <div class="glass-panel hero">
+            <h1>Create<br>your vision.</h1>
+            <p>Menerima jasa ilustrasi karakter, desain aset digital, dan karya seni khusus dengan kualitas visual terbaik.</p>
+            <a href="#pemesanan" class="btn-neon">Mulai Sekarang</a>
+        </div>
 
-        // Format angka ke Rupiah
-        const totalRupiah = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(total);
+        <!-- Bagian Harga -->
+        <div id="harga">
+            <h2 class="section-title">Packages</h2>
+            <div class="pricing-grid">
+                
+                <div class="glass-panel price-card">
+                    <div>
+                        <h3>Sketsa / Lineart</h3>
+                        <div class="price">Rp 50k</div>
+                        <ul>
+                            <li>1 Karakter (Half Body)</li>
+                            <li>Resolusi Tinggi (300dpi)</li>
+                            <li>Revisi 2x</li>
+                        </ul>
+                    </div>
+                </div>
 
-        // Memasukkan data ke dalam HTML
-        document.getElementById('invNama').innerText = nama;
-        document.getElementById('invPaket').innerText = paket;
-        document.getElementById('invJumlah').innerText = jumlah + ' item';
-        document.getElementById('invTotal').innerText = totalRupiah;
+                <div class="glass-panel price-card" style="border: 1px solid rgba(255, 75, 156, 0.5);">
+                    <div>
+                        <h3>Full Color</h3>
+                        <div class="price">Rp 150k</div>
+                        <ul>
+                            <li>1 Karakter (Full Body)</li>
+                            <li>Background Sederhana</li>
+                            <li>Revisi 3x</li>
+                        </ul>
+                    </div>
+                </div>
 
-        // Logika saat tombol Konfirmasi ditekan
-        document.getElementById('btnKonfirmasi').addEventListener('click', function() {
-            const pesan = `Halo! Saya sudah melakukan pembayaran untuk komisi art.%0A%0A*Atas Nama:* ${nama}%0A*Total Transfer:* ${totalRupiah}%0A%0ABerikut saya lampirkan bukti transfernya.`;
-            const nomorWA = "6281234567890"; // Ganti dengan nomor Anda
-            
-            // Buka WhatsApp
-            window.open(`https://wa.me/${nomorWA}?text=${pesan}`, '_blank');
-            
-            // Setelah klik konfirmasi, arahkan user kembali ke index (atau halaman sukses)
-            window.location.href = 'index.html';
-        });
-    </script>
+            </div>
+        </div>
+
+        <!-- Form Pemesanan & Pembayaran -->
+        <div id="pemesanan" class="glass-panel" style="margin-top: 4rem;">
+            <h2 class="section-title" style="text-align: left; font-size: 1.5rem;">Order & Payment</h2>
+            <form id="orderForm" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                <div>
+                    <label for="namaPembeli" style="font-weight: 300; font-size: 0.9rem;">Nama Pembeli:</label><br>
+                    <input type="text" id="namaPembeli" placeholder="Masukkan nama Anda..." required class="form-input">
+                </div>
+                <div>
+                    <label for="pilihanPaket" style="font-weight: 300; font-size: 0.9rem;">Pilih Paket:</label><br>
+                    <select id="pilihanPaket" required class="form-input">
+                        <option value="50000" style="color: black;">Sketsa / Lineart - Rp 50.000</option>
+                        <option value="150000" style="color: black;">Full Color - Rp 150.000</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="jumlahBarang" style="font-weight: 300; font-size: 0.9rem;">Jumlah Karakter/Barang:</label><br>
+                    <input type="number" id="jumlahBarang" min="1" value="1" required class="form-input">
+                </div>
+                <div style="padding: 1.5rem; background: rgba(0, 242, 254, 0.1); border-left: 4px solid #00f2fe; border-radius: 8px;">
+                    <h3 style="font-weight: 300; font-size: 1rem;">Total Pembayaran: 
+                        <span id="totalHarga" style="font-weight: 700; color: #00f2fe; font-size: 1.5rem; display: block; margin-top: 0.5rem;">Rp 50.000</span>
+                    </h3>
+                </div>
+                <button type="submit" class="btn-neon" style="border: none; cursor: pointer; margin-top: 1rem; font-family: 'Poppins', sans-serif; width: 100%;">
+                    Lanjut ke Pembayaran
+                </button>
+            </form>
+        </div>
+
+        <footer>
+            &copy; 2026 NamaKreator. UI/UX Glassmorphism.
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jasa Commission | Glassmorphism</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Latar Belakang Dekoratif -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="glass-panel" style="padding: 1rem 2rem; margin-bottom: 4rem;">
+            <div class="logo">kreator.</div>
+            <nav>
+                <ul>
+                    <li><a href="#harga">Pricing</a></li>
+                    <li><a href="#pemesanan">Order</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <div class="glass-panel hero">
+            <h1>Create<br>your vision.</h1>
+            <p>Menerima jasa ilustrasi karakter, desain aset digital, dan karya seni khusus dengan kualitas visual terbaik.</p>
+            <a href="#pemesanan" class="btn-neon">Mulai Sekarang</a>
+        </div>
+
+        <!-- Bagian Harga -->
+        <div id="harga">
+            <h2 class="section-title">Packages</h2>
+            <div class="pricing-grid">
+                
+                <div class="glass-panel price-card">
+                    <div>
+                        <h3>Sketsa / Lineart</h3>
+                        <div class="price">Rp 50k</div>
+                        <ul>
+                            <li>1 Karakter (Half Body)</li>
+                            <li>Resolusi Tinggi (300dpi)</li>
+                            <li>Revisi 2x</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="glass-panel price-card" style="border: 1px solid rgba(255, 75, 156, 0.5);">
+                    <div>
+                        <h3>Full Color</h3>
+                        <div class="price">Rp 150k</div>
+                        <ul>
+                            <li>1 Karakter (Full Body)</li>
+                            <li>Background Sederhana</li>
+                            <li>Revisi 3x</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Form Pemesanan & Pembayaran -->
+        <div id="pemesanan" class="glass-panel" style="margin-top: 4rem;">
+            <h2 class="section-title" style="text-align: left; font-size: 1.5rem;">Order & Payment</h2>
+            <form id="orderForm" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                <div>
+                    <label for="namaPembeli" style="font-weight: 300; font-size: 0.9rem;">Nama Pembeli:</label><br>
+                    <input type="text" id="namaPembeli" placeholder="Masukkan nama Anda..." required class="form-input">
+                </div>
+                <div>
+                    <label for="pilihanPaket" style="font-weight: 300; font-size: 0.9rem;">Pilih Paket:</label><br>
+                    <select id="pilihanPaket" required class="form-input">
+                        <option value="50000" style="color: black;">Sketsa / Lineart - Rp 50.000</option>
+                        <option value="150000" style="color: black;">Full Color - Rp 150.000</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="jumlahBarang" style="font-weight: 300; font-size: 0.9rem;">Jumlah Karakter/Barang:</label><br>
+                    <input type="number" id="jumlahBarang" min="1" value="1" required class="form-input">
+                </div>
+                <div style="padding: 1.5rem; background: rgba(0, 242, 254, 0.1); border-left: 4px solid #00f2fe; border-radius: 8px;">
+                    <h3 style="font-weight: 300; font-size: 1rem;">Total Pembayaran: 
+                        <span id="totalHarga" style="font-weight: 700; color: #00f2fe; font-size: 1.5rem; display: block; margin-top: 0.5rem;">Rp 50.000</span>
+                    </h3>
+                </div>
+                <button type="submit" class="btn-neon" style="border: none; cursor: pointer; margin-top: 1rem; font-family: 'Poppins', sans-serif; width: 100%;">
+                    Lanjut ke Pembayaran
+                </button>
+            </form>
+        </div>
+
+        <footer>
+            &copy; 2026 NamaKreator. UI/UX Glassmorphism.
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
 </body>
 </html>
