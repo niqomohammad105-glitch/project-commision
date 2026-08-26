@@ -1,10 +1,35 @@
-// 1. Menghilangkan Loading Screen
+// ==========================================
+// 1. PENGATURAN TEMA (DARK/LIGHT MODE)
+// ==========================================
+const themeToggleBtn = document.getElementById('themeToggle');
+const body = document.body;
+
+// Mengecek preferensi tema yang disimpan sebelumnya
+if (localStorage.getItem('theme') === 'light') {
+    body.classList.add('light-mode');
+    if (themeToggleBtn) themeToggleBtn.innerText = '🌙 Gelap';
+}
+
+if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', () => {
+        body.classList.toggle('light-mode');
+        if (body.classList.contains('light-mode')) {
+            localStorage.setItem('theme', 'light');
+            themeToggleBtn.innerText = '🌙 Gelap';
+        } else {
+            localStorage.setItem('theme', 'dark');
+            themeToggleBtn.innerText = '☀️ Terang';
+        }
+    });
+}
+
+// 2. Menghilangkan Loading Screen
 window.addEventListener('load', function() {
     const loader = document.getElementById('loading-screen');
     if (loader) { setTimeout(() => { loader.classList.add('fade-out'); }, 500); }
 });
 
-// 2. 3D Tilt Effect & Lightbox Modal
+// 3. 3D Tilt Effect & Lightbox Modal
 const portfolioCards = document.querySelectorAll('.portfolio-item');
 const modal = document.getElementById('imageModal');
 const modalImg = document.getElementById('modalImage');
@@ -52,7 +77,7 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal && modal.classList.contains('modal-show')) closeModal();
 });
 
-// 3. FAQ Accordion
+// 4. FAQ Accordion
 const faqQuestions = document.querySelectorAll('.faq-question');
 faqQuestions.forEach(question => {
     question.addEventListener('click', () => {
@@ -66,7 +91,7 @@ faqQuestions.forEach(question => {
     });
 });
 
-// 4. Toast Notification
+// 5. Toast Notification
 function showToast(message) {
     const toast = document.getElementById('toastNotification');
     if(toast) {
@@ -76,7 +101,7 @@ function showToast(message) {
     }
 }
 
-// 5. Form Logika & Sanitasi Keamanan (XSS Prevention)
+// 6. Form Logika & Sanitasi Keamanan (XSS Prevention)
 const orderForm = document.getElementById('orderForm');
 const namaPembeliInput = document.getElementById('namaPembeli');
 const pilihanPaketInput = document.getElementById('pilihanPaket');
@@ -125,7 +150,7 @@ if (orderForm) {
     });
 }
 
-// 6. SCROLL REVEAL ANIMATION (INTERSECTION OBSERVER)
+// 7. SCROLL REVEAL ANIMATION
 const revealElements = document.querySelectorAll('.reveal');
 const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
@@ -134,12 +159,6 @@ const revealObserver = new IntersectionObserver((entries, observer) => {
             observer.unobserve(entry.target);
         }
     });
-}, {
-    root: null,
-    threshold: 0.15,
-    rootMargin: "0px 0px -50px 0px"
-});
+}, { root: null, threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
 
-revealElements.forEach(el => {
-    revealObserver.observe(el);
-});
+revealElements.forEach(el => { revealObserver.observe(el); });
