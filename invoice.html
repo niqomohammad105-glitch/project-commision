@@ -6,42 +6,56 @@
     <title>Invoice | 3D Studio</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <!-- Inline script mencegah kedipan layar putih/hitam -->
+    <script>if (localStorage.getItem('theme') === 'light') document.documentElement.classList.add('light-mode');</script>
 </head>
-<body>
+<body class="light-mode-sync">
     <div id="loading-screen"><div class="loader-ring"></div><div class="loader-text">STUDIO</div></div>
 
     <div class="container" style="max-width: 600px; margin-top: 5rem;">
         <div class="glass-panel reveal" style="text-align: center;">
             <h2 class="section-title reveal" style="margin-bottom: 1rem;">Invoice Pesanan</h2>
             
-            <div class="reveal" style="background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 12px; text-align: left; margin-bottom: 2rem;">
-                <p style="margin-bottom: 0.5rem; font-weight: 300;">Halo, <strong id="invNama" style="color: #FFFFFF;"></strong>!</p>
-                <p style="margin-bottom: 0.5rem; font-weight: 300; color: #AAAAAA;">Berikut adalah detail pesanan Anda:</p>
+            <div class="reveal" style="background: var(--glass-border); padding: 1.5rem; border-radius: 12px; text-align: left; margin-bottom: 2rem;">
+                <p style="margin-bottom: 0.5rem; font-weight: 300;">Halo, <strong id="invNama" style="color: var(--text-color);"></strong>!</p>
+                <p style="margin-bottom: 0.5rem; font-weight: 300; color: var(--text-muted);">Berikut adalah detail pesanan Anda:</p>
                 <ul style="list-style: none; margin-top: 1rem; opacity: 0.9; font-weight: 300;">
                     <li style="margin-bottom: 0.5rem;">Paket: <span id="invPaket" style="float: right;"></span></li>
                     <li style="margin-bottom: 0.5rem;">Jumlah: <span id="invJumlah" style="float: right;"></span></li>
-                    <li style="margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed rgba(255,255,255,0.2); font-weight: 700; font-size: 1.2rem;">
-                        Total Tagihan: <span id="invTotal" style="float: right; color: #FFFFFF;"></span>
+                    <li style="margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--glass-border); font-weight: 700; font-size: 1.2rem;">
+                        Total Tagihan: <span id="invTotal" style="float: right; color: var(--text-color);"></span>
                     </li>
                 </ul>
             </div>
 
-            <div class="reveal" style="margin-bottom: 2rem; text-align: left;">
-                <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">Metode Pembayaran:</h3>
-                <p style="font-weight: 300; font-size: 0.9rem; color: #AAAAAA;">BCA: 1234567890 a.n. Kreator Studio</p>
-                <p style="font-weight: 300; font-size: 0.9rem; color: #AAAAAA;">GoPay: 085168655896</p>
+            <div class="reveal" style="margin-bottom: 1.5rem; background: var(--input-bg); padding: 2rem 1.5rem; border-radius: 12px; border: 1px solid var(--glass-border);">
+                <h3 style="font-size: 1.1rem; margin-bottom: 1.5rem; font-weight: 500;">Metode Pembayaran (QRIS)</h3>
+                
+                <div style="background: #FFFFFF; padding: 15px; border-radius: 12px; display: inline-block; margin-bottom: 2rem; box-shadow: 0 10px 25px var(--glass-shadow);">
+                    <!-- GANTI URL GAMBAR INI DENGAN GAMBAR BARCODE QRIS ASLI ANDA -->
+                    <img src="https://via.placeholder.com/250x250/FFFFFF/000000?text=GAMBAR+QRIS+ANDA" alt="Scan QRIS" style="width: 250px; height: 250px; object-fit: contain;">
+                </div>
+
+                <button id="btnKonfirmasi" class="btn-solid btn-action" style="width: 100%; border: none; cursor: pointer; margin-bottom: 2rem;">
+                    Sudah Memverifikasi Pembayaran
+                </button>
+
+                <div style="border-top: 1px solid var(--glass-border); padding-top: 1.5rem; text-align: left;">
+                    <p style="font-weight: 300; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">Atau transfer manual ke:</p>
+                    <p style="font-weight: 500; font-size: 0.95rem; margin-bottom: 0.2rem;">BCA: 1234567890 a.n. Kreator Studio</p>
+                    <p style="font-weight: 500; font-size: 0.95rem;">GoPay: 085168655896</p>
+                </div>
             </div>
 
-            <button id="btnKonfirmasi" class="btn-solid btn-action reveal" style="width: 100%; border: none; cursor: pointer;">
-                Konfirmasi Pembayaran
-            </button>
-            <br><br>
-            <a href="index.html" class="reveal" style="font-size: 0.8rem; text-decoration: underline; opacity: 0.6; display: inline-block; margin-top: 1.5rem;">Batalkan & Kembali</a>
+            <a href="index.html" class="reveal" style="font-size: 0.8rem; text-decoration: underline; opacity: 0.6; display: inline-block; margin-top: 0.5rem;">Batalkan pesanan & Kembali</a>
         </div>
     </div>
 
     <script src="script.js"></script>
     <script>
+        // Sinkronisasi kelas body jika script head terlewat
+        if (localStorage.getItem('theme') === 'light') document.body.classList.add('light-mode');
+        
         const urlParams = new URLSearchParams(window.location.search);
         const nama = urlParams.get('nama');
         const paket = urlParams.get('paket');
@@ -57,7 +71,7 @@
         document.getElementById('invTotal').innerText = totalRupiah;
 
         document.getElementById('btnKonfirmasi').addEventListener('click', function() {
-            const pesan = `Halo! Saya sudah melakukan pembayaran komisi 3D Render.%0A%0A*Atas Nama:* ${nama}%0A*Paket:* ${paket}%0A*Total Transfer:* ${totalRupiah}%0A%0ABerikut saya lampirkan bukti transfernya.`;
+            const pesan = `Halo! Saya sudah melakukan pembayaran komisi 3D Render.%0A%0A*Atas Nama:* ${nama}%0A*Paket:* ${paket}%0A*Total Pembayaran:* ${totalRupiah}%0A%0ABerikut saya lampirkan bukti transfer/scan QRIS-nya.`;
             window.open(`https://wa.me/6285168655896?text=${pesan}`, '_blank');
             window.location.href = 'success.html';
         });
