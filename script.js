@@ -12,14 +12,14 @@ const closeModalBtn = document.getElementById('closeModal');
 const modalBackdrop = document.getElementById('modalBackdrop');
 
 portfolioCards.forEach(card => {
-    // Interaksi 3D Tilt - Menghitung koordinat mouse untuk efek miring
+    // Interaksi 3D Tilt
     card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
-        const rotateX = ((y - centerY) / centerY) * -12; // Sudut tilt disesuaikan
+        const rotateX = ((y - centerY) / centerY) * -12; 
         const rotateY = ((x - centerX) / centerX) * 12;
         card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
     });
@@ -69,7 +69,7 @@ faqQuestions.forEach(question => {
     });
 });
 
-// 4. Toast Notification (Pengganti UI Alert bawaan browser)
+// 4. Toast Notification
 function showToast(message) {
     const toast = document.getElementById('toastNotification');
     if(toast) {
@@ -115,7 +115,7 @@ if (orderForm) {
         
         let namaRaw = namaPembeliInput.value.trim();
         
-        // AUDIT KEAMANAN: Memfilter karakter berbahaya untuk mencegah Cross-Site Scripting (XSS)
+        // AUDIT KEAMANAN: Memfilter karakter berbahaya untuk mencegah XSS
         let namaAman = namaRaw.replace(/[^a-zA-Z0-9 ]/g, "");
 
         if (namaAman === "") {
@@ -128,7 +128,6 @@ if (orderForm) {
         const jumlah = encodeURIComponent(jumlahBarangInput.value);
         const total = encodeURIComponent(parseInt(pilihanPaketInput.value) * parseInt(jumlahBarangInput.value));
         
-        // Mengalihkan ke ekosistem pembayaran (Invoice)
         window.location.href = `invoice.html?nama=${nama}&paket=${paketText}&jumlah=${jumlah}&total=${total}`;
     });
 }
