@@ -15,15 +15,16 @@
     </div>
 
     <div class="container">
-        <!-- Header -->
+        <!-- Header & Theme Toggle -->
         <header class="glass-panel reveal" style="padding: 1rem 2rem; margin-bottom: 4rem;">
             <div class="logo">kreator.</div>
-            <nav>
-                <ul>
+            <nav style="display: flex; gap: 2rem; align-items: center;">
+                <ul style="display: flex; gap: 2rem; list-style: none;">
                     <li><a href="#portofolio">Karya</a></li>
                     <li><a href="#harga">Harga</a></li>
                     <li><a href="#pemesanan">Pesan</a></li>
                 </ul>
+                <button id="themeToggle" class="btn-theme">☀️ Terang</button>
             </nav>
         </header>
 
@@ -106,9 +107,9 @@
                 <div>
                     <label for="pilihanPaket" style="font-weight: 300; font-size: 0.9rem;">Pilih Paket 3D:</label><br>
                     <select id="pilihanPaket" required class="form-input">
-                        <option value="25000" style="color: black;">Chibi Style - Rp 25.000</option>
-                        <option value="50000" style="color: black;">Half Body - Rp 50.000</option>
-                        <option value="75000" style="color: black;">Full Body - Rp 75.000</option>
+                        <option value="25000">Chibi Style - Rp 25.000</option>
+                        <option value="50000">Half Body - Rp 50.000</option>
+                        <option value="75000">Full Body - Rp 75.000</option>
                     </select>
                 </div>
                 <div>
@@ -117,7 +118,7 @@
                 </div>
                 <div class="total-box">
                     <h3 style="font-weight: 300; font-size: 1rem;">Total Pembayaran: 
-                        <span id="totalHarga" style="font-weight: 700; color: #FFFFFF; font-size: 1.5rem; display: block; margin-top: 0.5rem;">Rp 25.000</span>
+                        <span id="totalHarga" class="price-highlight" style="font-weight: 700; font-size: 1.5rem; display: block; margin-top: 0.5rem;">Rp 25.000</span>
                     </h3>
                 </div>
                 <button type="submit" class="btn-solid btn-action" style="border: none; cursor: pointer; margin-top: 1rem; width: 100%;">
@@ -132,43 +133,25 @@
             <div class="faq-container">
                 <div class="faq-item reveal">
                     <button class="faq-question">Apakah semua paket sudah termasuk full color?</button>
-                    <div class="faq-answer">
-                        <p>Ya, benar! Seluruh paket yang tersedia (Chibi, Half Body, maupun Full Body) sudah termasuk pewarnaan penuh (Full Color) dengan material plastik matte berkualitas tinggi.</p>
-                    </div>
+                    <div class="faq-answer"><p>Ya, benar! Seluruh paket yang tersedia sudah termasuk pewarnaan penuh dengan material plastik matte berkualitas tinggi.</p></div>
                 </div>
                 <div class="faq-item reveal">
-                    <button class="faq-question">Berapa lama estimasi waktu pengerjaan (rendering)?</button>
-                    <div class="faq-answer">
-                        <p>Proses pengerjaan biasanya memakan waktu sekitar 3 hingga 7 hari kerja, tergantung pada antrean yang ada serta tingkat kerumitan desain karakter Anda.</p>
-                    </div>
+                    <button class="faq-question">Berapa lama estimasi waktu pengerjaan?</button>
+                    <div class="faq-answer"><p>Sekitar 3 hingga 7 hari kerja, tergantung antrean dan kerumitan desain.</p></div>
                 </div>
                 <div class="faq-item reveal">
-                    <button class="faq-question">Apa saja yang didapatkan setelah pesanan selesai?</button>
-                    <div class="faq-answer">
-                        <p>Anda akan mendapatkan file hasil rendering akhir beresolusi tinggi (format PNG/JPG berkualitas 2K atau 4K tergantung paket) tanpa tanda air (watermark).</p>
-                    </div>
-                </div>
-                <div class="faq-item reveal">
-                    <button class="faq-question">Apakah hasil render bisa digunakan untuk kebutuhan komersial?</button>
-                    <div class="faq-answer">
-                        <p>Harga standar yang tertera di website khusus untuk penggunaan pribadi (Personal Use). Untuk lisensi Commercial Use, akan dikenakan penyesuaian biaya tambahan.</p>
-                    </div>
-                </div>
-                <div class="faq-item reveal">
-                    <button class="faq-question">Bagaimana alur pemesanan dan pembayarannya?</button>
-                    <div class="faq-answer">
-                        <p>Anda dapat mengisi formulir pesanan di website, melihat total tagihan pada halaman invoice, lalu melakukan konfirmasi pembayaran manual melalui WhatsApp ke nomor 085168655896.</p>
-                    </div>
+                    <button class="faq-question">Bagaimana alur pembayarannya?</button>
+                    <div class="faq-answer"><p>Isi form, scan QRIS di halaman invoice, lalu klik konfirmasi untuk mengirim bukti via WhatsApp (085168655896).</p></div>
                 </div>
             </div>
         </div>
 
         <footer class="reveal">
-            &copy; 2026 Kreator 3D Studio. Pure Monochrome UI.
+            &copy; 2026 Kreator 3D Studio. Hybrid Mode UI.
         </footer>
     </div>
 
-    <!-- Elemen Modal & Toast Notification -->
+    <!-- Modal & Toast -->
     <div id="imageModal" class="modal-hidden">
         <div class="modal-backdrop" id="modalBackdrop"></div>
         <div class="modal-content">
@@ -176,9 +159,7 @@
             <img id="modalImage" src="" alt="Enlarged Artwork">
         </div>
     </div>
-    
     <div id="toastNotification" class="toast-hidden">Pesan Notifikasi</div>
-    
     <script src="script.js"></script>
 </body>
 </html>
