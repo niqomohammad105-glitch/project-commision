@@ -3,246 +3,291 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jasa Commission | Tema Soft</title>
+    <title>Jasa Commission | Glassmorphism</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
     <style>
         /* Pengaturan Dasar */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
+
         body {
-            line-height: 1.6;
-            /* Warna teks cokelat keabuan lembut, background krem pastel */
-            color: #594a4e; 
-            background-color: #fdfbf9;
+            background-color: #1a0b2e;
+            background-image: linear-gradient(135deg, #1a0b2e 0%, #3b185f 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
         }
+
         a {
             text-decoration: none;
             color: inherit;
         }
 
-        /* Navigasi */
+        /* Latar Belakang Dekoratif (Bola Neon) */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(10px);
+            z-index: -1;
+        }
+        .blob-1 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #ff007a, #9900ff);
+            top: 10%;
+            left: -100px;
+        }
+        .blob-2 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #00f2fe, #4facfe);
+            top: 40%;
+            right: -150px;
+        }
+        .blob-3 {
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(135deg, #ff0844, #ffb199);
+            bottom: -50px;
+            left: 20%;
+        }
+
+        /* Container Utama & Efek Glassmorphism */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Header */
         header {
-            /* Warna pink pastel muda */
-            background: #f4ebe8;
-            padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            margin-bottom: 3rem;
+            padding: 1rem 2rem;
         }
         .logo {
             font-size: 1.5rem;
-            font-weight: bold;
-            color: #b89096; /* Aksen pink sedikit lebih gelap */
+            font-weight: 900;
+            letter-spacing: 1px;
         }
         nav ul {
             list-style: none;
             display: flex;
-            gap: 1.5rem;
+            gap: 2rem;
+        }
+        nav a {
+            font-weight: 300;
+            opacity: 0.8;
+            transition: opacity 0.3s;
         }
         nav a:hover {
-            color: #b89096;
+            opacity: 1;
         }
 
-        /* Bagian Hero (Sambutan) */
+        /* Hero Section */
         .hero {
-            text-align: center;
-            padding: 5rem 1rem;
-            /* Lapisan warna soft transparan di atas gambar */
-            background: linear-gradient(rgba(244, 235, 232, 0.85), rgba(244, 235, 232, 0.85)), url('https://via.placeholder.com/1920x600') center/cover;
+            text-align: left;
         }
         .hero h1 {
-            font-size: 3rem;
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1.1;
             margin-bottom: 1rem;
         }
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background: #e2c2c6; /* Dusty pink */
-            color: #594a4e;
-            border-radius: 30px; /* Dibuat membulat agar lebih soft */
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-        .btn:hover {
-            background: #cfaab0;
-            transform: translateY(-2px);
+            font-size: 1.1rem;
+            font-weight: 300;
+            opacity: 0.8;
+            margin-bottom: 2.5rem;
+            max-width: 500px;
         }
 
-        /* Desain Bagian (Section) */
-        .section {
-            padding: 4rem 5%;
+        /* Tombol Neon Pink */
+        .btn-neon {
+            display: inline-block;
+            background: linear-gradient(90deg, #ff4b9c, #ff7aab);
+            color: white;
+            font-weight: 500;
+            padding: 1rem 3rem;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(255, 75, 156, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-            font-size: 2rem;
+        .btn-neon:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 75, 156, 0.6);
         }
 
         /* Grid Daftar Harga */
-        .pricing-grid {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .card {
-            background: white;
-            padding: 2.5rem 2rem;
-            border-radius: 15px; /* Sudut lebih melengkung */
-            box-shadow: 0 10px 20px rgba(89, 74, 78, 0.05);
-            width: 320px;
-            text-align: center;
-            border: 1px solid #f4ebe8;
-        }
-        .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        .price {
+        .section-title {
             font-size: 2rem;
-            font-weight: bold;
-            color: #b89096;
-            margin-bottom: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
         }
-        .card ul {
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .price-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .price-card h3 {
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+        .price-card .price {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin: 1rem 0;
+            background: -webkit-linear-gradient(#00f2fe, #4facfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .price-card ul {
             list-style: none;
             margin-bottom: 2rem;
-            text-align: left;
+            font-weight: 300;
+            font-size: 0.9rem;
+            opacity: 0.8;
         }
-        .card ul li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #f4ebe8;
+        .price-card ul li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        .card ul li::before {
-            content: '✿'; /* Mengganti centang dengan bunga kecil agar lebih aesthetic */
-            color: #a3b899; /* Hijau sage lembut */
-            margin-right: 10px;
+        .price-card ul li::before {
+            content: '•';
+            color: #ff4b9c;
+            font-size: 1.5rem;
         }
 
-        /* Syarat & Ketentuan (TOS) */
-        .tos-box {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 15px;
-            max-width: 800px;
-            margin: 0 auto;
-            box-shadow: 0 10px 20px rgba(89, 74, 78, 0.05);
+        /* Form Kontak / TOS */
+        .tos-list {
+            list-style: none;
+            font-weight: 300;
         }
-        .tos-box ul {
-            margin-left: 1.5rem;
-        }
-        .tos-box li {
-            margin-bottom: 0.8rem;
+        .tos-list li {
+            margin-bottom: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid #00f2fe;
         }
 
         /* Footer */
         footer {
-            background: #f4ebe8;
             text-align: center;
-            padding: 3rem 5%;
-            margin-top: 2rem;
-        }
-        .footer-text {
-            color: #9c898d;
-            font-size: 0.9rem;
-            margin-top: 2rem;
+            padding: 2rem;
+            opacity: 0.6;
+            font-size: 0.8rem;
+            font-weight: 300;
         }
     </style>
 </head>
 <body>
 
-    <!-- Header / Navigasi -->
-    <header>
-        <div class="logo">Kreator.</div>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#harga">Harga</a></li>
-                <li><a href="#tos">TOS</a></li>
-                <li><a href="#kontak">Kontak</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Latar Belakang Dekoratif -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <h1>Open Commission</h1>
-        <p>Menghadirkan visual manis untuk kebutuhan personal & komersial.</p>
-        <a href="#kontak" class="btn">Pesan Sekarang</a>
-    </section>
-
-    <!-- Bagian Harga -->
-    <section id="harga" class="section">
-        <h2 class="section-title">Daftar Harga</h2>
-        <div class="pricing-grid">
-            
-            <!-- Paket 1 -->
-            <div class="card">
-                <h3>Sketsa / Lineart</h3>
-                <div class="price">Rp 50.000</div>
+    <div class="container">
+        
+        <!-- Header -->
+        <header class="glass-panel" style="padding: 1rem 2rem; margin-bottom: 4rem;">
+            <div class="logo">kreator.</div>
+            <nav>
                 <ul>
-                    <li>1 Karakter (Half Body)</li>
-                    <li>Resolusi Tinggi (300dpi)</li>
-                    <li>Revisi 2x</li>
-                    <li>Waktu pengerjaan 1-2 Hari</li>
+                    <li><a href="#harga">Pricing</a></li>
+                    <li><a href="#tos">Terms</a></li>
                 </ul>
-                <a href="#kontak" class="btn">Pilih Paket</a>
-            </div>
+            </nav>
+        </header>
 
-            <!-- Paket 2 -->
-            <div class="card">
-                <h3>Full Color</h3>
-                <div class="price">Rp 150.000</div>
-                <ul>
-                    <li>1 Karakter (Full Body)</li>
-                    <li>Background Sederhana</li>
-                    <li>Revisi 3x</li>
-                    <li>Waktu pengerjaan 3-5 Hari</li>
-                </ul>
-                <a href="#kontak" class="btn">Pilih Paket</a>
-            </div>
-
+        <!-- Hero Section -->
+        <div class="glass-panel hero">
+            <h1>Create<br>your vision.</h1>
+            <p>Menerima jasa ilustrasi karakter, desain aset digital, dan karya seni khusus dengan kualitas visual terbaik.</p>
+            <a href="#harga" class="btn-neon">Mulai Sekarang</a>
         </div>
-    </section>
 
-    <!-- Bagian Syarat & Ketentuan (TOS) -->
-    <section id="tos" class="section" style="background-color: #f4ebe8;">
-        <h2 class="section-title">Syarat & Ketentuan (T.O.S)</h2>
-        <div class="tos-box">
-            <p><strong>Sebelum memesan, harap baca dengan saksama:</strong></p>
-            <br>
-            <ul>
-                <li><strong>Pembayaran:</strong> DP minimal 50% dibayar di awal setelah sketsa disetujui. Pelunasan dilakukan sebelum file asli dikirim.</li>
-                <li><strong>Revisi:</strong> Revisi mayor (ganti pose/konsep) hanya dilakukan pada tahap sketsa. Setelah tahap pewarnaan, hanya menerima revisi minor.</li>
-                <li><strong>Hak Cipta:</strong> Hasil komisi hanya untuk penggunaan pribadi (Personal Use). Untuk lisensi komersial, harga akan disesuaikan.</li>
-                <li><strong>Yang Tidak Diterima:</strong> NSFW, Mecha rumit, Gore ekstrem.</li>
+        <!-- Bagian Harga -->
+        <div id="harga">
+            <h2 class="section-title">Packages</h2>
+            <div class="pricing-grid">
+                
+                <div class="glass-panel price-card">
+                    <div>
+                        <h3>Sketsa / Lineart</h3>
+                        <div class="price">Rp 50k</div>
+                        <ul>
+                            <li>1 Karakter (Half Body)</li>
+                            <li>Resolusi Tinggi (300dpi)</li>
+                            <li>Revisi 2x</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="btn-neon" style="text-align: center; padding: 0.8rem;">Pilih</a>
+                </div>
+
+                <div class="glass-panel price-card" style="border: 1px solid rgba(255, 75, 156, 0.5);">
+                    <div>
+                        <h3>Full Color</h3>
+                        <div class="price">Rp 150k</div>
+                        <ul>
+                            <li>1 Karakter (Full Body)</li>
+                            <li>Background Sederhana</li>
+                            <li>Revisi 3x</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="btn-neon" style="text-align: center; padding: 0.8rem;">Pilih</a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Syarat & Ketentuan -->
+        <div id="tos" class="glass-panel">
+            <h2 class="section-title" style="text-align: left; font-size: 1.5rem;">Terms & Conditions</h2>
+            <ul class="tos-list">
+                <li><strong>Pembayaran:</strong> DP minimal 50% dibayar di awal setelah sketsa disetujui.</li>
+                <li><strong>Revisi:</strong> Revisi mayor hanya pada tahap sketsa. Revisi minor pada tahap pewarnaan.</li>
+                <li><strong>Hak Cipta:</strong> Hasil komisi hanya untuk penggunaan pribadi (Personal Use).</li>
             </ul>
         </div>
-    </section>
 
-    <!-- Footer / Kontak -->
-    <footer id="kontak">
-        <h2>Siap untuk memesan?</h2>
-        <p style="margin: 1rem 0;">Mari diskusikan ide Anda melalui platform di bawah ini:</p>
-        <p>
-            Email: <strong>kreator@email.com</strong> | 
-            Instagram: <strong>@NamaKreator</strong> | 
-            Twitter/X: <strong>@NamaKreator</strong>
-        </p>
-        <p class="footer-text">&copy; 2026 NamaKreator. Semua hak dilindungi.</p>
-    </footer>
+        <footer>
+            &copy; 2026 NamaKreator. UI/UX Glassmorphism.
+        </footer>
+
+    </div>
 
 </body>
 </html>
-
