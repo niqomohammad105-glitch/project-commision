@@ -3,16 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Toy Render | Commission</title>
+    <title>2D Illustration | Commission</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div id="loading-screen">
-        <div class="loader-ring"></div>
-        <div class="loader-text">STUDIO</div>
-    </div>
+    <div id="loading-screen"><div class="loader-ring"></div><div class="loader-text">STUDIO</div></div>
 
     <div class="container">
         <!-- Header & Theme Toggle -->
@@ -30,23 +26,28 @@
 
         <!-- Hero Section -->
         <div class="glass-panel hero">
-            <h1 class="reveal">Bring your<br><span class="text-gradient">toys to life.</span></h1>
-            <p class="reveal">Menerima jasa 3D cartoon render eksklusif dengan gaya toy figure estetik, material plastik matte, dan pencahayaan studio premium.</p>
+            <!-- STATUS ANTREAN (QUEUE BADGE) BARU -->
+            <div class="queue-badge reveal">
+                <span class="pulse-dot"></span> Open Commission: 3/5 Slots Available
+            </div>
+            
+            <h1 class="reveal">Bring your<br><span class="text-gradient">characters to life.</span></h1>
+            <p class="reveal">Menerima jasa ilustrasi 2D eksklusif. Spesialisasi dalam desain karakter full color dengan detail yang tajam dan resolusi tinggi untuk kebutuhan personal Anda.</p>
             <a href="#pemesanan" class="btn-solid btn-hero reveal">Pesan Sekarang</a>
         </div>
 
         <!-- Galeri Portofolio -->
         <div id="portofolio" style="margin-bottom: 4rem;">
-            <h2 class="section-title reveal">Latest Renders</h2>
+            <h2 class="section-title reveal">Latest Artworks</h2>
             <div class="portfolio-grid">
                 <div class="glass-panel portfolio-item reveal">
-                    <img src="https://via.placeholder.com/300x300/111111/FFFFFF?text=Toy+Render+1" alt="Artwork 1" class="portfolio-img">
+                    <img src="https://via.placeholder.com/300x300/111111/FFFFFF?text=2D+Artwork+1" alt="Artwork 1" class="portfolio-img">
                 </div>
                 <div class="glass-panel portfolio-item reveal">
-                    <img src="https://via.placeholder.com/300x300/111111/FFFFFF?text=Toy+Render+2" alt="Artwork 2" class="portfolio-img">
+                    <img src="https://via.placeholder.com/300x300/111111/FFFFFF?text=2D+Artwork+2" alt="Artwork 2" class="portfolio-img">
                 </div>
                 <div class="glass-panel portfolio-item reveal">
-                    <img src="https://via.placeholder.com/300x300/111111/FFFFFF?text=Toy+Render+3" alt="Artwork 3" class="portfolio-img">
+                    <img src="https://via.placeholder.com/300x300/111111/FFFFFF?text=2D+Artwork+3" alt="Artwork 3" class="portfolio-img">
                 </div>
             </div>
         </div>
@@ -61,9 +62,9 @@
                         <div class="price">Rp 25k</div>
                         <ul>
                             <li>1 Karakter (Chibi Cute)</li>
-                            <li>Full Color Matte Material</li>
-                            <li>Resolusi Tinggi (2K)</li>
-                            <li>Revisi 2x</li>
+                            <li>Full Color + Simple Background</li>
+                            <li>Resolusi Tinggi (300dpi)</li>
+                            <li>Revisi Sketsa 2x</li>
                         </ul>
                     </div>
                 </div>
@@ -74,9 +75,9 @@
                         <div class="price">Rp 50k</div>
                         <ul>
                             <li>1 Karakter (Half Body)</li>
-                            <li>Full Color Matte Material</li>
-                            <li>Resolusi Tinggi (2K)</li>
-                            <li>Revisi 2x</li>
+                            <li>Full Color + Simple Background</li>
+                            <li>Resolusi Tinggi (300dpi)</li>
+                            <li>Revisi Sketsa 2x</li>
                         </ul>
                     </div>
                 </div>
@@ -87,9 +88,9 @@
                         <div class="price text-gradient">Rp 75k</div>
                         <ul>
                             <li>1 Karakter (Full Body)</li>
-                            <li>Full Color + Studio Backdrop</li>
-                            <li>Resolusi High-End (4K)</li>
-                            <li>Revisi 3x</li>
+                            <li>Full Color + Custom Background</li>
+                            <li>Resolusi High-End (300dpi)</li>
+                            <li>Revisi Sketsa 3x</li>
                         </ul>
                     </div>
                 </div>
@@ -105,7 +106,7 @@
                     <input type="text" id="namaPembeli" placeholder="Masukkan nama Anda..." required class="form-input">
                 </div>
                 <div>
-                    <label for="pilihanPaket" style="font-weight: 300; font-size: 0.9rem;">Pilih Paket 3D:</label><br>
+                    <label for="pilihanPaket" style="font-weight: 300; font-size: 0.9rem;">Pilih Paket Ilustrasi:</label><br>
                     <select id="pilihanPaket" required class="form-input">
                         <option value="25000">Chibi Style - Rp 25.000</option>
                         <option value="50000">Half Body - Rp 50.000</option>
@@ -115,6 +116,11 @@
                 <div>
                     <label for="jumlahBarang" style="font-weight: 300; font-size: 0.9rem;">Jumlah Karakter:</label><br>
                     <input type="number" id="jumlahBarang" min="1" value="1" required class="form-input">
+                </div>
+                <!-- KOLOM LINK REFERENSI BARU -->
+                <div>
+                    <label for="linkReferensi" style="font-weight: 300; font-size: 0.9rem;">Link Referensi Karakter (G-Drive/Pinterest dll):</label><br>
+                    <input type="url" id="linkReferensi" placeholder="https://..." class="form-input">
                 </div>
                 <div class="total-box">
                     <h3 style="font-weight: 300; font-size: 1rem;">Total Pembayaran: 
@@ -133,25 +139,24 @@
             <div class="faq-container">
                 <div class="faq-item reveal">
                     <button class="faq-question">Apakah semua paket sudah termasuk full color?</button>
-                    <div class="faq-answer"><p>Ya, benar! Seluruh paket yang tersedia sudah termasuk pewarnaan penuh dengan material plastik matte berkualitas tinggi.</p></div>
+                    <div class="faq-answer"><p>Ya, benar! Seluruh paket yang tersedia sudah termasuk ilustrasi berwarna penuh (Full Color) dengan resolusi tinggi (300dpi).</p></div>
                 </div>
                 <div class="faq-item reveal">
-                    <button class="faq-question">Berapa lama estimasi waktu pengerjaan?</button>
-                    <div class="faq-answer"><p>Sekitar 3 hingga 7 hari kerja, tergantung antrean dan kerumitan desain.</p></div>
+                    <button class="faq-question">Bagaimana sistem revisinya?</button>
+                    <div class="faq-answer"><p>Revisi besar dilakukan pada tahap sketsa kasar. Setelah masuk tahap lineart dan pewarnaan, hanya menerima revisi minor.</p></div>
                 </div>
                 <div class="faq-item reveal">
                     <button class="faq-question">Bagaimana alur pembayarannya?</button>
-                    <div class="faq-answer"><p>Isi form, scan QRIS di halaman invoice, lalu klik konfirmasi untuk mengirim bukti via WhatsApp (085168655896).</p></div>
+                    <div class="faq-answer"><p>Isi form, scan QRIS di halaman invoice, lalu klik konfirmasi untuk mengirim bukti ke WhatsApp.</p></div>
                 </div>
             </div>
         </div>
 
         <footer class="reveal">
-            &copy; 2026 Kreator 3D Studio. Hybrid Mode UI.
+            &copy; 2026 Kreator 2D Studio. Hybrid Mode UI.
         </footer>
     </div>
 
-    <!-- Modal & Toast -->
     <div id="imageModal" class="modal-hidden">
         <div class="modal-backdrop" id="modalBackdrop"></div>
         <div class="modal-content">
@@ -160,6 +165,7 @@
         </div>
     </div>
     <div id="toastNotification" class="toast-hidden">Pesan Notifikasi</div>
+    
     <script src="script.js"></script>
 </body>
 </html>
