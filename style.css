@@ -1,0 +1,204 @@
+/* Pengaturan Dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #1a0b2e;
+    background-image: linear-gradient(135deg, #1a0b2e 0%, #3b185f 100%);
+    color: #ffffff;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Latar Belakang Dekoratif (Bola Neon) */
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(10px);
+    z-index: -1;
+}
+.blob-1 {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, #ff007a, #9900ff);
+    top: 10%;
+    left: -100px;
+}
+.blob-2 {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, #00f2fe, #4facfe);
+    top: 40%;
+    right: -150px;
+}
+.blob-3 {
+    width: 250px;
+    height: 250px;
+    background: linear-gradient(135deg, #ff0844, #ffb199);
+    bottom: -50px;
+    left: 20%;
+}
+
+/* Container Utama & Efek Glassmorphism */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.glass-panel {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    padding: 1rem 2rem;
+}
+.logo {
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+nav a {
+    font-weight: 300;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+nav a:hover {
+    opacity: 1;
+}
+
+/* Hero Section */
+.hero {
+    text-align: left;
+}
+.hero h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+}
+.hero p {
+    font-size: 1.1rem;
+    font-weight: 300;
+    opacity: 0.8;
+    margin-bottom: 2.5rem;
+    max-width: 500px;
+}
+
+/* Tombol Neon Pink */
+.btn-neon {
+    display: inline-block;
+    background: linear-gradient(90deg, #ff4b9c, #ff7aab);
+    color: white;
+    font-weight: 500;
+    padding: 1rem 3rem;
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(255, 75, 156, 0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-neon:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 75, 156, 0.6);
+}
+
+/* Grid Daftar Harga */
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+.price-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.price-card h3 {
+    font-size: 1.2rem;
+    font-weight: 300;
+    opacity: 0.9;
+}
+.price-card .price {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin: 1rem 0;
+    background: -webkit-linear-gradient(#00f2fe, #4facfe);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.price-card ul {
+    list-style: none;
+    margin-bottom: 2rem;
+    font-weight: 300;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+.price-card ul li {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.price-card ul li::before {
+    content: '•';
+    color: #ff4b9c;
+    font-size: 1.5rem;
+}
+
+/* Form Kontak / TOS */
+.tos-list {
+    list-style: none;
+    font-weight: 300;
+}
+.tos-list li {
+    margin-bottom: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 3px solid #00f2fe;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem;
+    opacity: 0.6;
+    font-size: 0.8rem;
+    font-weight: 300;
+}
