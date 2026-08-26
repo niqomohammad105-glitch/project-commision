@@ -4,7 +4,7 @@ window.addEventListener('load', function() {
     if (loader) { setTimeout(() => { loader.classList.add('fade-out'); }, 500); }
 });
 
-// 2. 3D Tilt Effect & Lightbox Modal
+// 2. 3D Tilt Effect & Lightbox Modal (UI Interactions)
 const portfolioCards = document.querySelectorAll('.portfolio-item');
 const modal = document.getElementById('imageModal');
 const modalImg = document.getElementById('modalImage');
@@ -12,24 +12,26 @@ const closeModalBtn = document.getElementById('closeModal');
 const modalBackdrop = document.getElementById('modalBackdrop');
 
 portfolioCards.forEach(card => {
-    // Interaksi 3D Tilt
+    // Interaksi 3D Tilt - Menghitung koordinat mouse untuk efek miring
     card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
-        const rotateX = ((y - centerY) / centerY) * -15;
-        const rotateY = ((x - centerX) / centerX) * 15;
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+        const rotateX = ((y - centerY) / centerY) * -12; // Sudut tilt disesuaikan
+        const rotateY = ((x - centerX) / centerX) * 12;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
     });
+    
     card.addEventListener('mouseleave', () => {
         card.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)`;
         card.style.transition = 'transform 0.5s ease-out';
     });
+    
     card.addEventListener('mouseenter', () => { card.style.transition = 'none'; });
 
-    // Interaksi Lightbox
+    // Interaksi Lightbox Modal
     card.addEventListener('click', () => {
         const imgSrc = card.querySelector('.portfolio-img').src;
         if(modalImg) {
@@ -47,6 +49,8 @@ function closeModal() {
 }
 if(closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
 if(modalBackdrop) modalBackdrop.addEventListener('click', closeModal);
+
+// Keamanan Aksesibilitas: Menutup modal dengan tombol Escape
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal && modal.classList.contains('modal-show')) closeModal();
 });
@@ -65,7 +69,7 @@ faqQuestions.forEach(question => {
     });
 });
 
-// 4. Toast Notification
+// 4. Toast Notification (Pengganti UI Alert bawaan browser)
 function showToast(message) {
     const toast = document.getElementById('toastNotification');
     if(toast) {
@@ -75,7 +79,7 @@ function showToast(message) {
     }
 }
 
-// 5. Form Logika & Sanitasi Keamanan (XSS)
+// 5. Form Logika & Sanitasi Keamanan (XSS Prevention)
 const orderForm = document.getElementById('orderForm');
 const namaPembeliInput = document.getElementById('namaPembeli');
 const pilihanPaketInput = document.getElementById('pilihanPaket');
@@ -91,6 +95,7 @@ function hitungTotal() {
     const hargaPaket = parseInt(pilihanPaketInput.value);
     const jumlahBarang = parseInt(jumlahBarangInput.value);
 
+    // Mencegah eksploitasi jumlah minus
     if (jumlahBarang < 1 || isNaN(jumlahBarang)) {
         totalHargaDisplay.innerText = "Tidak valid";
         return;
@@ -109,10 +114,12 @@ if (orderForm) {
         event.preventDefault(); 
         
         let namaRaw = namaPembeliInput.value.trim();
+        
+        // AUDIT KEAMANAN: Memfilter karakter berbahaya untuk mencegah Cross-Site Scripting (XSS)
         let namaAman = namaRaw.replace(/[^a-zA-Z0-9 ]/g, "");
 
         if (namaAman === "") {
-            showToast("Keamanan: Masukkan nama tanpa karakter khusus (<, >, dll).");
+            showToast("Sistem Keamanan: Masukkan nama tanpa karakter khusus (<, >, dll).");
             return;
         }
 
@@ -121,6 +128,7 @@ if (orderForm) {
         const jumlah = encodeURIComponent(jumlahBarangInput.value);
         const total = encodeURIComponent(parseInt(pilihanPaketInput.value) * parseInt(jumlahBarangInput.value));
         
+        // Mengalihkan ke ekosistem pembayaran (Invoice)
         window.location.href = `invoice.html?nama=${nama}&paket=${paketText}&jumlah=${jumlah}&total=${total}`;
     });
 }
