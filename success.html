@@ -6,15 +6,16 @@
     <title>Pesanan Berhasil | 3D Studio</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script>if (localStorage.getItem('theme') === 'light') document.documentElement.classList.add('light-mode');</script>
 </head>
 <body>
     <div id="loading-screen"><div class="loader-ring"></div><div class="loader-text">STUDIO</div></div>
 
     <div class="container" style="max-width: 600px; margin-top: 8rem; text-align: center;">
         <div class="glass-panel reveal">
-            <div style="font-size: 5rem; color: #FFFFFF; margin-bottom: 1rem; text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);">✓</div>
-            <h1 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: #fff;">Terima Kasih!</h1>
-            <p style="font-weight: 300; color: #AAAAAA; margin-bottom: 2.5rem;">
+            <div style="font-size: 5rem; color: var(--text-color); margin-bottom: 1rem;">✓</div>
+            <h1 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">Terima Kasih!</h1>
+            <p style="font-weight: 300; color: var(--text-muted); margin-bottom: 2.5rem;">
                 Pesanan 3D Render Anda telah kami terima. Silakan selesaikan konfirmasi di WhatsApp dan kami akan segera mulai menyiapkan desain karakter Anda.
             </p>
             <a href="index.html" class="btn-solid btn-return" style="font-size: 0.9rem;">Kembali ke Beranda</a>
@@ -22,5 +23,8 @@
     </div>
     
     <script src="script.js"></script>
+    <script>
+        if (localStorage.getItem('theme') === 'light') document.body.classList.add('light-mode');
+    </script>
 </body>
 </html>
