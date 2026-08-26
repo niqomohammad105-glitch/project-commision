@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jasa Commission | Glassmorphism</title>
+    <title>Jasa Commission | 3D Studio</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -11,10 +11,10 @@
     <!-- Loading Screen -->
     <div id="loading-screen">
         <div class="loader-ring"></div>
-        <div class="loader-text">kreator.</div>
+        <div class="loader-text">STUDIO.</div>
     </div>
 
-    <!-- Latar Belakang Dekoratif -->
+    <!-- Latar Belakang Dekoratif (Softbox Ambient) -->
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
     <div class="blob blob-3"></div>
@@ -25,73 +25,105 @@
             <div class="logo">kreator.</div>
             <nav>
                 <ul>
-                    <li><a href="#harga">Pricing</a></li>
-                    <li><a href="#pemesanan">Order</a></li>
+                    <li><a href="#portofolio">Karya</a></li>
+                    <li><a href="#harga">Harga</a></li>
+                    <li><a href="#pemesanan">Pesan</a></li>
                 </ul>
             </nav>
         </header>
 
         <!-- Hero Section -->
         <div class="glass-panel hero">
-            <h1>Create<br>your vision.</h1>
-            <p>Menerima jasa ilustrasi karakter, desain aset digital, dan karya seni khusus dengan kualitas visual terbaik.</p>
-            <a href="#pemesanan" class="btn-neon btn-hero">Mulai Sekarang</a>
+            <h1>Bring your<br>toys to life.</h1>
+            <p>Menerima jasa 3D cartoon render eksklusif dengan gaya toy figure estetik, material plastik matte, dan pencahayaan studio premium.</p>
+            <a href="#pemesanan" class="btn-neon btn-hero">Pesan Sekarang</a>
+        </div>
+
+        <!-- Galeri Portofolio -->
+        <div id="portofolio" style="margin-bottom: 4rem;">
+            <h2 class="section-title">Latest Renders</h2>
+            <div class="portfolio-grid">
+                <div class="glass-panel portfolio-item">
+                    <img src="https://via.placeholder.com/300x300/1E293B/38BDF8?text=Toy+Render+1" alt="Artwork 1" class="portfolio-img">
+                </div>
+                <div class="glass-panel portfolio-item">
+                    <img src="https://via.placeholder.com/300x300/1E293B/818CF8?text=Toy+Render+2" alt="Artwork 2" class="portfolio-img">
+                </div>
+                <div class="glass-panel portfolio-item">
+                    <img src="https://via.placeholder.com/300x300/1E293B/38BDF8?text=Toy+Render+3" alt="Artwork 3" class="portfolio-img">
+                </div>
+            </div>
         </div>
 
         <!-- Bagian Harga -->
         <div id="harga">
-            <h2 class="section-title">Packages</h2>
+            <h2 class="section-title">Commission Packages</h2>
             <div class="pricing-grid">
-                
                 <div class="glass-panel price-card">
                     <div>
-                        <h3>Sketsa / Lineart</h3>
-                        <div class="price">Rp 50k</div>
+                        <h3>Basic Render</h3>
+                        <div class="price">Rp 150k</div>
                         <ul>
                             <li>1 Karakter (Half Body)</li>
-                            <li>Resolusi Tinggi (300dpi)</li>
+                            <li>Solid Matte Material</li>
+                            <li>Resolusi 2K</li>
                             <li>Revisi 2x</li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="glass-panel price-card" style="border: 1px solid rgba(255, 75, 156, 0.5);">
+                <div class="glass-panel price-card" style="border: 1px solid rgba(56, 189, 248, 0.5);">
                     <div>
-                        <h3>Full Color</h3>
-                        <div class="price">Rp 150k</div>
+                        <h3>Premium Studio</h3>
+                        <div class="price">Rp 350k</div>
                         <ul>
                             <li>1 Karakter (Full Body)</li>
-                            <li>Background Sederhana</li>
+                            <li>Navy Blue Studio Backdrop</li>
+                            <li>Resolusi 4K (High-End)</li>
                             <li>Revisi 3x</li>
                         </ul>
                     </div>
                 </div>
-
             </div>
         </div>
 
-        <!-- Form Pemesanan & Pembayaran -->
+        <!-- FAQ -->
+        <div id="faq" class="glass-panel" style="margin-bottom: 4rem;">
+            <h2 class="section-title" style="text-align: left; font-size: 1.5rem;">F.A.Q</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">Apakah boleh untuk desain produk komersial?</button>
+                    <div class="faq-answer"><p>Harga tertera adalah untuk Personal Use. Untuk lisensi Commercial Use (seperti aset game atau promosi brand), akan dikenakan biaya tambahan.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Berapa lama proses rendering?</button>
+                    <div class="faq-answer"><p>Proses modeling hingga final render memakan waktu sekitar 5-10 hari kerja tergantung tingkat kerumitan desain.</p></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Pemesanan -->
         <div id="pemesanan" class="glass-panel" style="margin-top: 4rem;">
-            <h2 class="section-title" style="text-align: left; font-size: 1.5rem;">Order & Payment</h2>
+            <h2 class="section-title" style="text-align: left; font-size: 1.5rem;">Order Form</h2>
             <form id="orderForm" style="display: flex; flex-direction: column; gap: 1.5rem;">
                 <div>
-                    <label for="namaPembeli" style="font-weight: 300; font-size: 0.9rem;">Nama Pembeli:</label><br>
+                    <label for="namaPembeli" style="font-weight: 300; font-size: 0.9rem;">Nama Pemesan:</label><br>
                     <input type="text" id="namaPembeli" placeholder="Masukkan nama Anda..." required class="form-input">
                 </div>
                 <div>
-                    <label for="pilihanPaket" style="font-weight: 300; font-size: 0.9rem;">Pilih Paket:</label><br>
+                    <label for="pilihanPaket" style="font-weight: 300; font-size: 0.9rem;">Pilih Paket 3D:</label><br>
                     <select id="pilihanPaket" required class="form-input">
-                        <option value="50000" style="color: black;">Sketsa / Lineart - Rp 50.000</option>
-                        <option value="150000" style="color: black;">Full Color - Rp 150.000</option>
+                        <option value="150000" style="color: black;">Basic Render - Rp 150.000</option>
+                        <option value="350000" style="color: black;">Premium Studio - Rp 350.000</option>
                     </select>
                 </div>
                 <div>
-                    <label for="jumlahBarang" style="font-weight: 300; font-size: 0.9rem;">Jumlah Karakter/Barang:</label><br>
+                    <label for="jumlahBarang" style="font-weight: 300; font-size: 0.9rem;">Jumlah Karakter:</label><br>
                     <input type="number" id="jumlahBarang" min="1" value="1" required class="form-input">
                 </div>
-                <div style="padding: 1.5rem; background: rgba(0, 242, 254, 0.1); border-left: 4px solid #00f2fe; border-radius: 8px;">
+                <div style="padding: 1.5rem; background: rgba(56, 189, 248, 0.1); border-left: 4px solid #38BDF8; border-radius: 8px;">
                     <h3 style="font-weight: 300; font-size: 1rem;">Total Pembayaran: 
-                        <span id="totalHarga" style="font-weight: 700; color: #00f2fe; font-size: 1.5rem; display: block; margin-top: 0.5rem;">Rp 50.000</span>
+                        <span id="totalHarga" style="font-weight: 700; color: #38BDF8; font-size: 1.5rem; display: block; margin-top: 0.5rem;">Rp 150.000</span>
                     </h3>
                 </div>
                 <button type="submit" class="btn-neon btn-action" style="border: none; cursor: pointer; margin-top: 1rem; font-family: 'Poppins', sans-serif; width: 100%;">
@@ -101,9 +133,20 @@
         </div>
 
         <footer>
-            &copy; 2026 NamaKreator. UI/UX Glassmorphism.
+            &copy; 2026 Kreator 3D Studio. UI/UX Dark Glassmorphism.
         </footer>
     </div>
+
+    <!-- Elemen Modal & Toast Notification -->
+    <div id="imageModal" class="modal-hidden">
+        <div class="modal-backdrop" id="modalBackdrop"></div>
+        <div class="modal-content">
+            <button id="closeModal" class="modal-close">&times;</button>
+            <img id="modalImage" src="" alt="Enlarged Artwork">
+        </div>
+    </div>
+    
+    <div id="toastNotification" class="toast-hidden">Pesan Notifikasi</div>
     
     <script src="script.js"></script>
 </body>
