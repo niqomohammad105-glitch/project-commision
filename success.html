@@ -3,38 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pesanan Berhasil | Glassmorphism</title>
+    <title>Pesanan Berhasil | 3D Studio</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div id="loading-screen">
-        <div class="loader-ring"></div>
-        <div class="loader-text">kreator.</div>
-    </div>
-
+    <div id="loading-screen"><div class="loader-ring"></div><div class="loader-text">STUDIO.</div></div>
     <div class="blob blob-2" style="top: -10%; left: -10%;"></div>
     <div class="blob blob-3" style="bottom: 10%; right: 10%;"></div>
 
     <div class="container" style="max-width: 600px; margin-top: 8rem; text-align: center;">
         <div class="glass-panel">
-            <div style="font-size: 4rem; color: #00f2fe; margin-bottom: 1rem;">✓</div>
-            <h1 style="font-size: 2rem; font-weight: 700; margin-bottom: 1rem;">Terima Kasih!</h1>
+            <div style="font-size: 4rem; color: #38BDF8; margin-bottom: 1rem;">✓</div>
+            <h1 style="font-size: 2rem; font-weight: 700; margin-bottom: 1rem; color: #fff;">Terima Kasih!</h1>
             <p style="font-weight: 300; opacity: 0.8; margin-bottom: 2rem;">
-                Pesanan Anda telah kami terima dan pesan konfirmasi WhatsApp telah disiapkan. Kami akan segera mengecek pembayaran Anda dan memulai pengerjaan komisi.
+                Pesanan 3D Render Anda telah kami terima. Silakan selesaikan konfirmasi di WhatsApp dan kami akan segera mulai menyiapkan setup studio untuk karakter Anda.
             </p>
             <a href="index.html" class="btn-neon btn-return" style="font-size: 0.9rem;">Kembali ke Beranda</a>
         </div>
     </div>
-
     <script>
-        // Menghilangkan Loading Screen
-        window.addEventListener('load', function() {
-            setTimeout(() => {
-                document.getElementById('loading-screen').classList.add('fade-out');
-            }, 500);
-        });
+        window.addEventListener('load', function() { setTimeout(() => { document.getElementById('loading-screen').classList.add('fade-out'); }, 500); });
     </script>
 </body>
 </html>
