@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invoice | 3D Studio</title>
+    <title>Invoice | 2D Studio</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <!-- Inline script mencegah kedipan layar putih/hitam -->
     <script>if (localStorage.getItem('theme') === 'light') document.documentElement.classList.add('light-mode');</script>
 </head>
 <body class="light-mode-sync">
@@ -18,10 +17,14 @@
             
             <div class="reveal" style="background: var(--glass-border); padding: 1.5rem; border-radius: 12px; text-align: left; margin-bottom: 2rem;">
                 <p style="margin-bottom: 0.5rem; font-weight: 300;">Halo, <strong id="invNama" style="color: var(--text-color);"></strong>!</p>
-                <p style="margin-bottom: 0.5rem; font-weight: 300; color: var(--text-muted);">Berikut adalah detail pesanan Anda:</p>
+                <p style="margin-bottom: 0.5rem; font-weight: 300; color: var(--text-muted);">Berikut adalah detail pesanan art Anda:</p>
                 <ul style="list-style: none; margin-top: 1rem; opacity: 0.9; font-weight: 300;">
                     <li style="margin-bottom: 0.5rem;">Paket: <span id="invPaket" style="float: right;"></span></li>
                     <li style="margin-bottom: 0.5rem;">Jumlah: <span id="invJumlah" style="float: right;"></span></li>
+                    
+                    <!-- BARIS BARU UNTUK LINK REFERENSI -->
+                    <li style="margin-bottom: 0.5rem;">Ref: <a href="#" id="invLink" target="_blank" style="float: right; color: #3B82F6; text-decoration: underline; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"></a></li>
+                    
                     <li style="margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--glass-border); font-weight: 700; font-size: 1.2rem;">
                         Total Tagihan: <span id="invTotal" style="float: right; color: var(--text-color);"></span>
                     </li>
@@ -53,7 +56,6 @@
 
     <script src="script.js"></script>
     <script>
-        // Sinkronisasi kelas body jika script head terlewat
         if (localStorage.getItem('theme') === 'light') document.body.classList.add('light-mode');
         
         const urlParams = new URLSearchParams(window.location.search);
@@ -61,17 +63,30 @@
         const paket = urlParams.get('paket');
         const jumlah = urlParams.get('jumlah');
         const total = urlParams.get('total');
+        const linkRef = urlParams.get('link'); // AMBIL LINK
 
         if(!nama || !total) window.location.href = 'index.html';
         const totalRupiah = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(total);
 
         document.getElementById('invNama').innerText = nama;
         document.getElementById('invPaket').innerText = paket;
-        document.getElementById('invJumlah').innerText = jumlah + ' pesanan';
+        document.getElementById('invJumlah').innerText = jumlah + ' karakter';
         document.getElementById('invTotal').innerText = totalRupiah;
+        
+        // Atur link referensi
+        const linkElement = document.getElementById('invLink');
+        if (linkRef && linkRef !== "Tidak ada") {
+            linkElement.innerText = linkRef;
+            linkElement.href = linkRef;
+        } else {
+            linkElement.innerText = "Tidak dilampirkan";
+            linkElement.style.color = "var(--text-muted)";
+            linkElement.style.textDecoration = "none";
+        }
 
         document.getElementById('btnKonfirmasi').addEventListener('click', function() {
-            const pesan = `Halo! Saya sudah melakukan pembayaran komisi 3D Render.%0A%0A*Atas Nama:* ${nama}%0A*Paket:* ${paket}%0A*Total Pembayaran:* ${totalRupiah}%0A%0ABerikut saya lampirkan bukti transfer/scan QRIS-nya.`;
+            // SISIPKAN LINK REFERENSI KE WA
+            const pesan = `Halo! Saya sudah melakukan pembayaran komisi 2D Illustration.%0A%0A*Atas Nama:* ${nama}%0A*Paket:* ${paket}%0A*Total Pembayaran:* ${totalRupiah}%0A*Link Referensi Karakter:* ${linkRef}%0A%0ABerikut saya lampirkan bukti transfer/scan QRIS-nya.`;
             window.open(`https://wa.me/6285168655896?text=${pesan}`, '_blank');
             window.location.href = 'success.html';
         });
