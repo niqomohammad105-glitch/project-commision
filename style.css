@@ -1,4 +1,3 @@
-/* Pengaturan Dasar */
 * {
     margin: 0;
     padding: 0;
@@ -20,7 +19,6 @@ a {
     color: inherit;
 }
 
-/* Latar Belakang Dekoratif (Bola Neon) */
 .blob {
     position: absolute;
     border-radius: 50%;
@@ -49,7 +47,6 @@ a {
     left: 20%;
 }
 
-/* Container Utama & Efek Glassmorphism */
 .container {
     max-width: 1000px;
     margin: 0 auto;
@@ -69,7 +66,6 @@ a {
     margin-bottom: 2rem;
 }
 
-/* Header */
 header {
     display: flex;
     justify-content: space-between;
@@ -96,7 +92,6 @@ nav a:hover {
     opacity: 1;
 }
 
-/* Hero Section */
 .hero {
     text-align: left;
 }
@@ -114,7 +109,6 @@ nav a:hover {
     max-width: 500px;
 }
 
-/* Tombol Neon Pink */
 .btn-neon {
     display: inline-block;
     background: linear-gradient(90deg, #ff4b9c, #ff7aab);
@@ -132,13 +126,13 @@ nav a:hover {
     box-shadow: 0 6px 20px rgba(255, 75, 156, 0.6);
 }
 
-/* Grid Daftar Harga */
 .section-title {
     font-size: 2rem;
     font-weight: 700;
     margin-bottom: 2rem;
     text-align: center;
 }
+
 .pricing-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -181,20 +175,18 @@ nav a:hover {
     font-size: 1.5rem;
 }
 
-/* Form Kontak / TOS */
-.tos-list {
-    list-style: none;
-    font-weight: 300;
-}
-.tos-list li {
-    margin-bottom: 1rem;
-    background: rgba(255, 255, 255, 0.03);
+.form-input {
+    width: 100%;
     padding: 1rem;
     border-radius: 8px;
-    border-left: 3px solid #00f2fe;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.05);
+    color: white;
+    margin-top: 0.5rem;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
 }
 
-/* Footer */
 footer {
     text-align: center;
     padding: 2rem;
