@@ -9,6 +9,10 @@
     <script>if (localStorage.getItem('theme') === 'light') document.documentElement.classList.add('light-mode');</script>
 </head>
 <body class="light-mode-sync">
+    <!-- Kursor Custom -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
     <div id="loading-screen"><div class="loader-ring"></div><div class="loader-text">STUDIO</div></div>
 
     <div class="container" style="max-width: 600px; margin-top: 5rem;">
@@ -22,7 +26,7 @@
                     <ul style="list-style: none; margin-top: 1rem; font-weight: 300;">
                         <li style="margin-bottom: 0.5rem; display: flex; justify-content: space-between;"><span>Paket:</span> <span id="invPaket" style="text-align: right;"></span></li>
                         <li style="margin-bottom: 0.5rem; display: flex; justify-content: space-between;"><span>Jumlah:</span> <span id="invJumlah" style="text-align: right;"></span></li>
-                        <li style="margin-bottom: 0.5rem; display: flex; justify-content: space-between;"><span>Ref:</span> <a href="#" id="invLink" target="_blank" style="color: var(--accent); text-decoration: underline; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: right;"></a></li>
+                        <li style="margin-bottom: 0.5rem; display: flex; justify-content: space-between;"><span>Ref:</span> <a href="#" id="invLink" target="_blank" class="hover-target" style="color: var(--accent); text-decoration: underline; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: right;"></a></li>
                         <li style="margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--glass-border); font-weight: 700; font-size: 1.2rem; display: flex; justify-content: space-between; align-items: center;">
                             <span>Total Tagihan:</span> <span id="invTotal" style="color: var(--text-color); font-size: 1.4rem;"></span>
                         </li>
@@ -33,8 +37,8 @@
                     <h3 style="font-size: 1.1rem; margin-bottom: 1.5rem; font-weight: 500;">Metode Pembayaran (QRIS)</h3>
                     
                     <div style="background: #FFFFFF; padding: 15px; border-radius: 12px; display: inline-block; margin-bottom: 2rem; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
-                        <!-- MASUKKAN GAMBAR QRIS ASLI ANDA DISINI -->
-                        <img src="https://via.placeholder.com/250x250/FFFFFF/000000?text=GAMBAR+QRIS+ANDA" alt="Scan QRIS" style="width: 250px; height: 250px; object-fit: contain;">
+                        <!-- GANTI DENGAN GAMBAR QRIS ASLI ANDA -->
+                        <img src="https://via.placeholder.com/250x250/FFFFFF/000000?text=GAMBAR+QRIS+ANDA" alt="Scan QRIS" class="hover-target" style="width: 250px; height: 250px; object-fit: contain;">
                     </div>
 
                     <button id="btnKonfirmasi" class="btn-solid btn-action hover-target magnetic-btn" style="width: 100%; border: none; cursor: pointer; margin-bottom: 2rem;">
@@ -53,6 +57,7 @@
         </div>
     </div>
 
+    <!-- Script Vanilla murni -->
     <script src="script.js"></script>
     <script>
         if (localStorage.getItem('theme') === 'light') document.body.classList.add('light-mode');
@@ -65,6 +70,7 @@
         const linkRef = urlParams.get('link');
 
         if(!nama || !total) window.location.href = 'index.html';
+        
         const totalRupiah = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(total);
 
         document.getElementById('invNama').innerText = nama;
@@ -74,10 +80,13 @@
         
         const linkElement = document.getElementById('invLink');
         if (linkRef && linkRef !== "Tidak ada") {
-            linkElement.innerText = linkRef; linkElement.href = linkRef;
+            linkElement.innerText = linkRef; 
+            linkElement.href = linkRef;
         } else {
             linkElement.innerText = "Tidak dilampirkan";
-            linkElement.style.color = "var(--text-muted)"; linkElement.style.textDecoration = "none";
+            linkElement.style.color = "var(--text-muted)"; 
+            linkElement.style.textDecoration = "none";
+            linkElement.classList.remove('hover-target'); 
         }
 
         document.getElementById('btnKonfirmasi').addEventListener('click', function() {
