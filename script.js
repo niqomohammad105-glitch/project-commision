@@ -90,7 +90,7 @@ faqQuestions.forEach(question => {
     });
 });
 
-// 5. Toast Notification
+// 5. Toast Notification (Sistem Peringatan)
 function showToast(message) {
     const toast = document.getElementById('toastNotification');
     if(toast) {
@@ -100,12 +100,13 @@ function showToast(message) {
     }
 }
 
-// 6. Form Logika & Sanitasi Keamanan (XSS Prevention)
+// 6. Form Logika, Kalkulator & Keamanan (ToS & XSS Prevention)
 const orderForm = document.getElementById('orderForm');
 const namaPembeliInput = document.getElementById('namaPembeli');
 const pilihanPaketInput = document.getElementById('pilihanPaket');
 const jumlahBarangInput = document.getElementById('jumlahBarang');
 const linkReferensiInput = document.getElementById('linkReferensi');
+const tosCheckbox = document.getElementById('tos');
 const totalHargaDisplay = document.getElementById('totalHarga');
 
 function formatRupiah(angka) {
@@ -131,8 +132,18 @@ if (pilihanPaketInput && jumlahBarangInput) {
 }
 
 if (orderForm) {
+    orderForm.setAttribute('novalidate', true); 
+    
     orderForm.addEventListener('submit', function(event) {
         event.preventDefault(); 
+        
+        // VALIDASI ToS
+        if (tosCheckbox && !tosCheckbox.checked) {
+            showToast("Sistem: Harap centang persetujuan Syarat & Ketentuan (ToS) untuk melanjutkan.");
+            return; 
+        }
+
+        // VALIDASI XSS
         let namaRaw = namaPembeliInput.value.trim();
         let namaAman = namaRaw.replace(/[^a-zA-Z0-9 ]/g, "");
 
