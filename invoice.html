@@ -12,42 +12,44 @@
     <div id="loading-screen"><div class="loader-ring"></div><div class="loader-text">STUDIO</div></div>
 
     <div class="container" style="max-width: 600px; margin-top: 5rem;">
-        <div class="glass-panel reveal" style="text-align: center;">
-            <h2 class="section-title reveal" style="margin-bottom: 1rem;">Invoice Pesanan</h2>
-            
-            <div class="reveal" style="background: var(--glass-border); padding: 1.5rem; border-radius: 12px; text-align: left; margin-bottom: 2rem;">
-                <p style="margin-bottom: 0.5rem; font-weight: 300;">Halo, <strong id="invNama" style="color: var(--text-color);"></strong>!</p>
-                <p style="margin-bottom: 0.5rem; font-weight: 300; color: var(--text-muted);">Berikut adalah detail pesanan art Anda:</p>
-                <ul style="list-style: none; margin-top: 1rem; opacity: 0.9; font-weight: 300;">
-                    <li style="margin-bottom: 0.5rem;">Paket: <span id="invPaket" style="float: right;"></span></li>
-                    <li style="margin-bottom: 0.5rem;">Jumlah: <span id="invJumlah" style="float: right;"></span></li>
-                    <li style="margin-bottom: 0.5rem;">Ref: <a href="#" id="invLink" target="_blank" style="float: right; color: #3B82F6; text-decoration: underline; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"></a></li>
-                    <li style="margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--glass-border); font-weight: 700; font-size: 1.2rem;">
-                        Total Tagihan: <span id="invTotal" style="float: right; color: var(--text-color);"></span>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="reveal" style="margin-bottom: 1.5rem; background: var(--input-bg); padding: 2rem 1.5rem; border-radius: 12px; border: 1px solid var(--glass-border);">
-                <h3 style="font-size: 1.1rem; margin-bottom: 1.5rem; font-weight: 500;">Metode Pembayaran (QRIS)</h3>
+        <div class="glass-panel reveal spotlight-card" style="text-align: center;">
+            <div class="card-content-z">
+                <h2 class="section-title reveal" style="margin-bottom: 1rem;">Invoice Pesanan</h2>
                 
-                <div style="background: #FFFFFF; padding: 15px; border-radius: 12px; display: inline-block; margin-bottom: 2rem; box-shadow: 0 10px 25px var(--glass-shadow);">
-                    <!-- MASUKKAN GAMBAR QRIS ASLI ANDA DISINI -->
-                    <img src="https://via.placeholder.com/250x250/FFFFFF/000000?text=GAMBAR+QRIS+ANDA" alt="Scan QRIS" style="width: 250px; height: 250px; object-fit: contain;">
+                <div class="reveal" style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: 12px; text-align: left; margin-bottom: 2rem; border: 1px solid var(--glass-border);">
+                    <p style="margin-bottom: 0.5rem; font-weight: 300;">Halo, <strong id="invNama" style="color: var(--text-color);"></strong>!</p>
+                    <p style="margin-bottom: 0.5rem; font-weight: 300; color: var(--text-muted);">Berikut adalah detail pesanan art Anda:</p>
+                    <ul style="list-style: none; margin-top: 1rem; font-weight: 300;">
+                        <li style="margin-bottom: 0.5rem; display: flex; justify-content: space-between;"><span>Paket:</span> <span id="invPaket" style="text-align: right;"></span></li>
+                        <li style="margin-bottom: 0.5rem; display: flex; justify-content: space-between;"><span>Jumlah:</span> <span id="invJumlah" style="text-align: right;"></span></li>
+                        <li style="margin-bottom: 0.5rem; display: flex; justify-content: space-between;"><span>Ref:</span> <a href="#" id="invLink" target="_blank" style="color: var(--accent); text-decoration: underline; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: right;"></a></li>
+                        <li style="margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--glass-border); font-weight: 700; font-size: 1.2rem; display: flex; justify-content: space-between; align-items: center;">
+                            <span>Total Tagihan:</span> <span id="invTotal" style="color: var(--text-color); font-size: 1.4rem;"></span>
+                        </li>
+                    </ul>
                 </div>
 
-                <button id="btnKonfirmasi" class="btn-solid btn-action" style="width: 100%; border: none; cursor: pointer; margin-bottom: 2rem;">
-                    Sudah Memverifikasi Pembayaran
-                </button>
+                <div class="reveal" style="margin-bottom: 1.5rem; background: var(--input-bg); padding: 2rem 1.5rem; border-radius: 12px; border: 1px solid var(--glass-border);">
+                    <h3 style="font-size: 1.1rem; margin-bottom: 1.5rem; font-weight: 500;">Metode Pembayaran (QRIS)</h3>
+                    
+                    <div style="background: #FFFFFF; padding: 15px; border-radius: 12px; display: inline-block; margin-bottom: 2rem; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+                        <!-- MASUKKAN GAMBAR QRIS ASLI ANDA DISINI -->
+                        <img src="https://via.placeholder.com/250x250/FFFFFF/000000?text=GAMBAR+QRIS+ANDA" alt="Scan QRIS" style="width: 250px; height: 250px; object-fit: contain;">
+                    </div>
 
-                <div style="border-top: 1px solid var(--glass-border); padding-top: 1.5rem; text-align: left;">
-                    <p style="font-weight: 300; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">Atau transfer manual ke:</p>
-                    <p style="font-weight: 500; font-size: 0.95rem; margin-bottom: 0.2rem;">BCA: 1234567890 a.n. Kreator Studio</p>
-                    <p style="font-weight: 500; font-size: 0.95rem;">GoPay: 085168655896</p>
+                    <button id="btnKonfirmasi" class="btn-solid btn-action hover-target magnetic-btn" style="width: 100%; border: none; cursor: pointer; margin-bottom: 2rem;">
+                        Sudah Memverifikasi Pembayaran
+                    </button>
+
+                    <div style="border-top: 1px solid var(--glass-border); padding-top: 1.5rem; text-align: left;">
+                        <p style="font-weight: 300; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">Atau transfer manual ke:</p>
+                        <p style="font-weight: 500; font-size: 0.95rem; margin-bottom: 0.2rem;">BCA: 1234567890 a.n. Kreator Studio</p>
+                        <p style="font-weight: 500; font-size: 0.95rem;">GoPay: 085168655896</p>
+                    </div>
                 </div>
+
+                <a href="index.html" class="reveal hover-target" style="font-size: 0.8rem; text-decoration: underline; opacity: 0.6; display: inline-block; margin-top: 0.5rem;">Batalkan pesanan & Kembali</a>
             </div>
-
-            <a href="index.html" class="reveal" style="font-size: 0.8rem; text-decoration: underline; opacity: 0.6; display: inline-block; margin-top: 0.5rem;">Batalkan pesanan & Kembali</a>
         </div>
     </div>
 
@@ -72,12 +74,10 @@
         
         const linkElement = document.getElementById('invLink');
         if (linkRef && linkRef !== "Tidak ada") {
-            linkElement.innerText = linkRef;
-            linkElement.href = linkRef;
+            linkElement.innerText = linkRef; linkElement.href = linkRef;
         } else {
             linkElement.innerText = "Tidak dilampirkan";
-            linkElement.style.color = "var(--text-muted)";
-            linkElement.style.textDecoration = "none";
+            linkElement.style.color = "var(--text-muted)"; linkElement.style.textDecoration = "none";
         }
 
         document.getElementById('btnKonfirmasi').addEventListener('click', function() {
