@@ -17,7 +17,7 @@
     <div id="loading-screen"><div class="loader-ring"></div><div class="loader-text">STUDIO</div></div>
 
     <div class="container">
-        <!-- Header Sangat Minimalis -->
+        <!-- Header -->
         <header class="glass-panel reveal" style="padding: 1rem 2rem; margin-bottom: 4rem;">
             <div class="logo">kreator.</div>
             <nav style="display: flex; align-items: center;">
@@ -177,7 +177,7 @@
                 <div style="display: flex; align-items: flex-start; gap: 0.8rem; margin-top: 0.5rem;" class="hover-target">
                     <input type="checkbox" id="tos" required style="margin-top: 0.3rem; cursor: pointer; width: 1.2rem; height: 1.2rem; accent-color: var(--text-color);">
                     <label for="tos" style="font-weight: 300; font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; cursor: pointer;">
-                        Saya telah membaca dan menyetujui <strong style="color: var(--text-color);">Syarat & Ketentuan (ToS)</strong> yang tertera pada FAQ, termasuk batas revisi.
+                        Saya telah membaca dan menyetujui <strong style="color: var(--text-color);">Syarat & Ketentuan (ToS)</strong> yang tertera pada FAQ.
                     </label>
                 </div>
 
@@ -185,6 +185,35 @@
                     Lanjut ke Pembayaran
                 </button>
             </form>
+        </div>
+
+        <!-- FAQ & ToS -->
+        <div id="faq" class="glass-panel reveal spotlight-card" style="margin-top: 4rem; margin-bottom: 4rem;">
+            <div class="card-content-z">
+                <h2 class="section-title" style="text-align: left; font-size: 1.5rem;">F.A.Q & T.o.S</h2>
+                <div class="faq-container">
+                    <div class="faq-item reveal delay-1">
+                        <button class="faq-question hover-target">Apakah semua paket sudah termasuk full color?</button>
+                        <div class="faq-answer"><p>Ya, benar! Seluruh paket yang tersedia sudah termasuk ilustrasi berwarna penuh (Full Color) dengan resolusi tinggi (300dpi).</p></div>
+                    </div>
+                    <div class="faq-item reveal delay-2">
+                        <button class="faq-question hover-target">Berapa lama estimasi waktu pengerjaan?</button>
+                        <div class="faq-answer"><p>Proses menggambar biasanya memakan waktu sekitar 3 hingga 7 hari kerja, tergantung antrean dan kerumitan desain karakter Anda.</p></div>
+                    </div>
+                    <div class="faq-item reveal delay-3">
+                        <button class="faq-question hover-target">Apa saja yang didapatkan setelah pesanan selesai?</button>
+                        <div class="faq-answer"><p>Anda akan mendapatkan file hasil ilustrasi digital beresolusi tinggi (format PNG/JPG transparan maupun dengan background) tanpa tanda air.</p></div>
+                    </div>
+                    <div class="faq-item reveal delay-4">
+                        <button class="faq-question hover-target">Bagaimana sistem revisinya?</button>
+                        <div class="faq-answer"><p>Revisi besar dilakukan pada tahap sketsa kasar. Setelah ilustrasi masuk tahap lineart dan pewarnaan dasar, kami hanya menerima revisi minor sesuai kuota paket.</p></div>
+                    </div>
+                    <div class="faq-item reveal delay-1">
+                        <button class="faq-question hover-target">Apakah hasil gambar bisa digunakan untuk komersial?</button>
+                        <div class="faq-answer"><p>Harga standar yang tertera di website khusus untuk penggunaan pribadi (Personal Use). Untuk lisensi Commercial Use, akan dikenakan penyesuaian biaya tambahan.</p></div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <footer class="reveal">
@@ -202,7 +231,6 @@
     </div>
     <div id="toastNotification" class="toast-hidden">Pesan Notifikasi</div>
     
-    <!-- Script Vanilla murni tanpa type module -->
     <script src="script.js"></script>
 </body>
 </html>
