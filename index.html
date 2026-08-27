@@ -9,40 +9,84 @@
     <script>if (localStorage.getItem('theme') === 'light') document.documentElement.classList.add('light-mode');</script>
 </head>
 <body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
     <div id="loading-screen"><div class="loader-ring"></div><div class="loader-text">STUDIO</div></div>
 
     <div class="container">
-        <!-- Header & Theme Toggle (Sangat Minimalis) -->
+        <!-- Header -->
         <header class="glass-panel reveal" style="padding: 1rem 2rem; margin-bottom: 4rem;">
             <div class="logo">kreator.</div>
             <nav style="display: flex; align-items: center;">
-                <button id="themeToggle" class="btn-theme">☀️ Terang</button>
+                <button id="themeToggle" class="btn-theme hover-target">☀️ Terang</button>
             </nav>
         </header>
 
         <!-- Hero Section -->
-        <div class="glass-panel hero">
+        <div class="glass-panel hero spotlight-card">
             <div class="queue-badge reveal">
                 <span class="pulse-dot"></span> Open Commission: 3/5 Slots Available
             </div>
-            
-            <h1 class="reveal">Bring your<br><span class="text-gradient">characters to life.</span></h1>
-            <p class="reveal">Menerima jasa ilustrasi 2D eksklusif. Spesialisasi dalam desain karakter full color dengan detail yang tajam dan resolusi tinggi untuk kebutuhan personal Anda.</p>
-            <a href="#pemesanan" class="btn-solid btn-hero reveal">Pesan Sekarang</a>
+            <h1 class="reveal cinematic-text">Bring your<br><span class="text-gradient">characters to life.</span></h1>
+            <p class="reveal delay-1">Menerima jasa ilustrasi 2D eksklusif. Spesialisasi dalam desain karakter full color dengan detail yang tajam dan resolusi tinggi untuk kebutuhan personal Anda.</p>
+            <a href="#pemesanan" class="btn-solid btn-hero reveal delay-2 hover-target magnetic-btn">Pesan Sekarang</a>
+        </div>
+
+        <!-- FITUR BARU: INFINITE MARQUEE TICKER -->
+        <div class="glass-panel marquee-container reveal delay-3">
+            <div class="marquee-track">
+                <span>✧ HIGH RESOLUTION ✧ FAST DELIVERY ✧ ORIGINAL ARTWORK ✧ NO AI GENERATED ✧ COMMERCIAL READY </span>
+                <span>✧ HIGH RESOLUTION ✧ FAST DELIVERY ✧ ORIGINAL ARTWORK ✧ NO AI GENERATED ✧ COMMERCIAL READY </span>
+            </div>
         </div>
 
         <!-- Galeri Portofolio -->
         <div id="portofolio" style="margin-bottom: 4rem;">
             <h2 class="section-title reveal">Latest Artworks</h2>
             <div class="portfolio-grid">
-                <div class="glass-panel portfolio-item reveal">
+                <div class="glass-panel portfolio-item reveal delay-1 hover-target spotlight-card">
                     <img src="https://via.placeholder.com/300x300/111111/FFFFFF?text=2D+Artwork+1" alt="Artwork 1" class="portfolio-img">
                 </div>
-                <div class="glass-panel portfolio-item reveal">
+                <div class="glass-panel portfolio-item reveal delay-2 hover-target spotlight-card">
                     <img src="https://via.placeholder.com/300x300/111111/FFFFFF?text=2D+Artwork+2" alt="Artwork 2" class="portfolio-img">
                 </div>
-                <div class="glass-panel portfolio-item reveal">
+                <div class="glass-panel portfolio-item reveal delay-3 hover-target spotlight-card">
                     <img src="https://via.placeholder.com/300x300/111111/FFFFFF?text=2D+Artwork+3" alt="Artwork 3" class="portfolio-img">
+                </div>
+            </div>
+        </div>
+
+        <!-- FITUR BARU: INTERACTIVE WORKFLOW TIMELINE -->
+        <div id="workflow" style="margin-bottom: 4rem;">
+            <h2 class="section-title reveal">Commission Workflow</h2>
+            <div class="timeline-container">
+                <div class="timeline-step reveal delay-1 hover-target spotlight-card">
+                    <div class="timeline-icon">1</div>
+                    <div class="card-content-z">
+                        <h4>Briefing & Payment</h4>
+                        <p>Diskusi referensi dan penyelesaian pembayaran via QRIS.</p>
+                    </div>
+                </div>
+                <div class="timeline-step reveal delay-2 hover-target spotlight-card">
+                    <div class="timeline-icon">2</div>
+                    <div class="card-content-z">
+                        <h4>Sketsa Kasar</h4>
+                        <p>Pembuatan sketsa awal. Revisi besar hanya di tahap ini.</p>
+                    </div>
+                </div>
+                <div class="timeline-step reveal delay-3 hover-target spotlight-card">
+                    <div class="timeline-icon">3</div>
+                    <div class="card-content-z">
+                        <h4>Lineart & Base Color</h4>
+                        <p>Penegasan garis dan warna dasar. Menerima revisi minor.</p>
+                    </div>
+                </div>
+                <div class="timeline-step reveal delay-4 hover-target spotlight-card">
+                    <div class="timeline-icon">4</div>
+                    <div class="card-content-z">
+                        <h4>Final Render</h4>
+                        <p>Penyelesaian detail dan pengiriman file resolusi tinggi.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -51,8 +95,8 @@
         <div id="harga">
             <h2 class="section-title reveal">Commission Packages</h2>
             <div class="pricing-grid">
-                <div class="glass-panel price-card reveal">
-                    <div>
+                <div class="glass-panel price-card reveal delay-1 hover-target spotlight-card">
+                    <div class="card-content-z">
                         <h3>Chibi Style</h3>
                         <div class="price">Rp 25k</div>
                         <ul>
@@ -64,8 +108,8 @@
                     </div>
                 </div>
 
-                <div class="glass-panel price-card reveal">
-                    <div>
+                <div class="glass-panel price-card reveal delay-2 hover-target spotlight-card">
+                    <div class="card-content-z">
                         <h3>Half Body</h3>
                         <div class="price">Rp 50k</div>
                         <ul>
@@ -77,8 +121,8 @@
                     </div>
                 </div>
 
-                <div class="glass-panel price-card premium-card reveal">
-                    <div>
+                <div class="glass-panel price-card premium-card reveal delay-3 hover-target spotlight-card">
+                    <div class="card-content-z">
                         <h3>Full Body</h3>
                         <div class="price text-gradient">Rp 75k</div>
                         <ul>
@@ -93,94 +137,55 @@
         </div>
 
         <!-- Form Pemesanan -->
-        <div id="pemesanan" class="glass-panel reveal" style="margin-top: 4rem;">
+        <div id="pemesanan" class="glass-panel reveal spotlight-card" style="margin-top: 4rem;">
             <h2 class="section-title" style="text-align: left; font-size: 1.5rem;">Order Form</h2>
-            <form id="orderForm" style="display: flex; flex-direction: column; gap: 1.5rem;">
-                <div>
-                    <label for="namaPembeli" style="font-weight: 300; font-size: 0.9rem;">Nama Pemesan:</label><br>
-                    <input type="text" id="namaPembeli" placeholder="Masukkan nama Anda..." required class="form-input">
+            <form id="orderForm" style="display: flex; flex-direction: column; gap: 1.5rem; position: relative; z-index: 2;">
+                
+                <div class="input-group">
+                    <input type="text" id="namaPembeli" required class="form-input hover-target" placeholder=" ">
+                    <label for="namaPembeli" class="floating-label">Nama Pemesan</label>
                 </div>
-                <div>
-                    <label for="pilihanPaket" style="font-weight: 300; font-size: 0.9rem;">Pilih Paket Ilustrasi:</label><br>
-                    <select id="pilihanPaket" required class="form-input">
+                
+                <div class="input-group">
+                    <select id="pilihanPaket" required class="form-input hover-target">
                         <option value="25000">Chibi Style - Rp 25.000</option>
                         <option value="50000">Half Body - Rp 50.000</option>
                         <option value="75000">Full Body - Rp 75.000</option>
                     </select>
+                    <label for="pilihanPaket" class="floating-label active-label">Pilih Paket Ilustrasi</label>
                 </div>
-                <div>
-                    <label for="jumlahBarang" style="font-weight: 300; font-size: 0.9rem;">Jumlah Karakter:</label><br>
-                    <input type="number" id="jumlahBarang" min="1" value="1" required class="form-input">
+                
+                <div class="input-group">
+                    <input type="number" id="jumlahBarang" min="1" value="1" required class="form-input hover-target" placeholder=" ">
+                    <label for="jumlahBarang" class="floating-label">Jumlah Karakter</label>
                 </div>
-                <div>
-                    <label for="linkReferensi" style="font-weight: 300; font-size: 0.9rem;">Link Referensi Karakter (G-Drive/Pinterest dll):</label><br>
-                    <input type="url" id="linkReferensi" placeholder="https://..." class="form-input">
+                
+                <div class="input-group">
+                    <input type="url" id="linkReferensi" class="form-input hover-target" placeholder=" ">
+                    <label for="linkReferensi" class="floating-label">Link Referensi (G-Drive/Pinterest dll)</label>
                 </div>
-                <div class="total-box">
+
+                <div class="total-box hover-target">
                     <h3 style="font-weight: 300; font-size: 1rem;">Total Pembayaran: 
                         <span id="totalHarga" class="price-highlight" style="font-weight: 700; font-size: 1.5rem; display: block; margin-top: 0.5rem;">Rp 25.000</span>
                     </h3>
                 </div>
 
-                <!-- CHECKBOX TERMS & CONDITIONS -->
-                <div style="display: flex; align-items: flex-start; gap: 0.8rem; margin-top: 0.5rem;">
+                <div style="display: flex; align-items: flex-start; gap: 0.8rem; margin-top: 0.5rem;" class="hover-target">
                     <input type="checkbox" id="tos" required style="margin-top: 0.3rem; cursor: pointer; width: 1.2rem; height: 1.2rem; accent-color: var(--text-color);">
                     <label for="tos" style="font-weight: 300; font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; cursor: pointer;">
-                        Saya telah membaca dan menyetujui <strong style="color: var(--text-color);">Syarat & Ketentuan (ToS)</strong> yang tertera pada FAQ, termasuk batas revisi dan aturan lisensi penggunaan personal.
+                        Saya telah membaca dan menyetujui <strong style="color: var(--text-color);">Syarat & Ketentuan (ToS)</strong> yang tertera pada FAQ.
                     </label>
                 </div>
 
-                <button type="submit" class="btn-solid btn-action" style="border: none; cursor: pointer; margin-top: 1rem; width: 100%;">
+                <button type="submit" class="btn-solid btn-action hover-target magnetic-btn" style="border: none; cursor: pointer; margin-top: 1rem; width: 100%;">
                     Lanjut ke Pembayaran
                 </button>
             </form>
         </div>
 
-        <!-- FAQ & ToS -->
-        <div id="faq" class="glass-panel reveal" style="margin-top: 4rem; margin-bottom: 4rem;">
-            <h2 class="section-title" style="text-align: left; font-size: 1.5rem;">F.A.Q & T.o.S</h2>
-            <div class="faq-container">
-                <div class="faq-item reveal">
-                    <button class="faq-question">Apakah semua paket sudah termasuk full color?</button>
-                    <div class="faq-answer">
-                        <p>Ya, benar! Seluruh paket yang tersedia sudah termasuk ilustrasi berwarna penuh (Full Color) dengan resolusi tinggi (300dpi).</p>
-                    </div>
-                </div>
-                <div class="faq-item reveal">
-                    <button class="faq-question">Berapa lama estimasi waktu pengerjaan?</button>
-                    <div class="faq-answer">
-                        <p>Proses menggambar biasanya memakan waktu sekitar 3 hingga 7 hari kerja, tergantung antrean dan kerumitan desain karakter Anda.</p>
-                    </div>
-                </div>
-                <div class="faq-item reveal">
-                    <button class="faq-question">Apa saja yang didapatkan setelah pesanan selesai?</button>
-                    <div class="faq-answer">
-                        <p>Anda akan mendapatkan file hasil ilustrasi digital beresolusi tinggi (format PNG/JPG transparan maupun dengan background) tanpa tanda air (watermark).</p>
-                    </div>
-                </div>
-                <div class="faq-item reveal">
-                    <button class="faq-question">Bagaimana sistem revisinya?</button>
-                    <div class="faq-answer">
-                        <p>Revisi besar dilakukan pada tahap sketsa kasar. Setelah ilustrasi masuk tahap lineart dan pewarnaan dasar, kami hanya menerima revisi minor sesuai kuota paket.</p>
-                    </div>
-                </div>
-                <div class="faq-item reveal">
-                    <button class="faq-question">Apakah hasil gambar bisa digunakan untuk komersial?</button>
-                    <div class="faq-answer">
-                        <p>Harga standar yang tertera di website khusus untuk penggunaan pribadi (Personal Use). Untuk lisensi Commercial Use, akan dikenakan penyesuaian biaya tambahan.</p>
-                    </div>
-                </div>
-                <div class="faq-item reveal">
-                    <button class="faq-question">Bagaimana alur pembayarannya?</button>
-                    <div class="faq-answer">
-                        <p>Isi form, scan QRIS di halaman invoice, lalu klik konfirmasi untuk mengirim bukti transfer beserta referensi karakter Anda via WhatsApp (085168655896).</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <footer class="reveal">
-            &copy; 2026 Kreator 2D Studio. Hybrid Mode UI.
+            &copy; 2026 Kreator 2D Studio. Ultra Premium UI.
         </footer>
     </div>
 
@@ -188,11 +193,11 @@
     <div id="imageModal" class="modal-hidden">
         <div class="modal-backdrop" id="modalBackdrop"></div>
         <div class="modal-content">
-            <button id="closeModal" class="modal-close">&times;</button>
+            <button id="closeModal" class="modal-close hover-target">&times;</button>
             <img id="modalImage" src="" alt="Enlarged Artwork">
         </div>
     </div>
     <div id="toastNotification" class="toast-hidden">Pesan Notifikasi</div>
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>
