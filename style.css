@@ -42,7 +42,6 @@ a, button { cursor: none; }
 .cursor-outline { width: 40px; height: 40px; border: 1px solid var(--text-muted); transition: width 0.3s, height 0.3s, background-color 0.3s; }
 .cursor-outline.hovered { width: 60px; height: 60px; background-color: rgba(255, 255, 255, 0.1); border-color: transparent; backdrop-filter: blur(2px); }
 body.light-mode .cursor-outline.hovered { background-color: rgba(0, 0, 0, 0.05); }
-@media (pointer: coarse) { * { cursor: auto !important; } .cursor-dot, .cursor-outline { display: none !important; } }
 
 #loading-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: var(--bg-color); z-index: 9999; display: flex; justify-content: center; align-items: center; flex-direction: column; transition: opacity 0.8s ease, visibility 0.8s ease; }
 .loader-ring { width: 60px; height: 60px; border: 3px solid var(--glass-border); border-radius: 50%; border-top-color: var(--text-color); animation: spin-loader 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite; }
@@ -138,7 +137,7 @@ body.light-mode .ripple { background: rgba(255, 255, 255, 0.4); }
 @keyframes ripple-anim { to { transform: scale(4); opacity: 0; } }
 
 /* =========================================
-   FORM FLOATING LABEL
+   FORM FLOATING LABEL & FAQ
    ========================================= */
 .input-group { position: relative; margin-top: 0.5rem; }
 .form-input { 
@@ -149,6 +148,14 @@ body.light-mode .ripple { background: rgba(255, 255, 255, 0.4); }
 .floating-label { position: absolute; left: 1.2rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); pointer-events: none; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); font-weight: 300; }
 .form-input:focus ~ .floating-label, .form-input:not(:placeholder-shown) ~ .floating-label, .active-label { top: 0.8rem; font-size: 0.75rem; color: var(--text-color); opacity: 0.7; font-weight: 500; }
 .total-box { padding: 1.5rem; background: rgba(255,255,255,0.02); border-left: 4px solid var(--text-color); border-radius: 12px; }
+
+.faq-container { display: flex; flex-direction: column; gap: 0.5rem; }
+.faq-item { border-bottom: 1px solid var(--glass-border); padding: 0.5rem 0; }
+.faq-question { width: 100%; background: none; border: none; color: var(--text-color); text-align: left; padding: 1rem 0; font-size: 1rem; font-weight: 500; transition: color 0.3s; display: flex; justify-content: space-between; align-items: center;}
+.faq-question::after { content: '+'; font-size: 1.5rem; transition: transform 0.3s; }
+.faq-question.active::after { transform: rotate(45deg); color: var(--text-muted); }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0, 1, 0, 1); }
+.faq-answer p { padding-bottom: 1.5rem; font-size: 0.9rem; font-weight: 300; color: var(--text-muted); line-height: 1.6; }
 
 /* =========================================
    MODAL & TOAST NOTIFICATION
@@ -176,7 +183,7 @@ body.light-mode .ripple { background: rgba(255, 255, 255, 0.4); }
 .delay-4 { transition-delay: 0.4s; }
 
 /* =========================================
-   RESPONSIVE DESIGN (MOBILE/TABLET)
+   MOBILE RESPONSIVE & TACTILE EFFECTS
    ========================================= */
 @media (max-width: 768px) {
     .container { padding: 1rem; } header { padding: 1.5rem 1rem; } .hero h1 { font-size: 2.8rem; }
@@ -185,3 +192,34 @@ body.light-mode .ripple { background: rgba(255, 255, 255, 0.4); }
     .magnetic-btn { width: 100%; text-align: center; transform: none !important; }
 }
 @media (max-width: 480px) { .hero h1 { font-size: 2.2rem; } }
+
+/* Matikan kursor kustom dan tambahkan efek HP */
+@media (hover: none) and (pointer: coarse) {
+    * { cursor: auto !important; } 
+    .cursor-dot, .cursor-outline { display: none !important; }
+    
+    /* Squish animation saat ditekan (Mobile Tactile) */
+    .btn-solid:active, .portfolio-item:active, .price-card:active, .timeline-step:active {
+        transform: scale(0.96) !important;
+        transition: transform 0.1s ease;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    }
+    
+    /* Breathing Spotlight (Cahaya Bernapas) otomatis untuk HP */
+    .spotlight-card::before {
+        opacity: 0.6;
+        background: radial-gradient(600px circle at 50% 50%, rgba(255, 255, 255, 0.08), transparent 50%);
+        animation: breathe-light 4s infinite alternate ease-in-out;
+    }
+    body.light-mode .spotlight-card::before {
+        background: radial-gradient(600px circle at 50% 50%, rgba(0, 0, 0, 0.05), transparent 50%);
+    }
+    
+    .ripple { background: rgba(255, 255, 255, 0.3); }
+    body.light-mode .ripple { background: rgba(0, 0, 0, 0.15); }
+}
+
+@keyframes breathe-light {
+    0% { transform: scale(1); opacity: 0.4; }
+    100% { transform: scale(1.1); opacity: 0.8; }
+}
