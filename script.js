@@ -1,5 +1,5 @@
 // ==========================================
-// 1. MAGNETIC BUTTON, RIPPLE & SPOTLIGHT CARD
+// 1. MAGNETIC BUTTON, RIPPLE & HAPTIC FEEDBACK
 // ==========================================
 const magneticBtns = document.querySelectorAll('.magnetic-btn');
 magneticBtns.forEach(btn => {
@@ -17,13 +17,21 @@ magneticBtns.forEach(btn => {
     });
 
     btn.addEventListener('click', function(e) {
-        const x = e.clientX - e.target.getBoundingClientRect().left;
-        const y = e.clientY - e.target.getBoundingClientRect().top;
+        // Haptic Feedback (Getar) untuk pengguna HP
+        if (navigator.vibrate) { navigator.vibrate(50); }
+
+        const rect = e.target.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        
+        const x = clientX - rect.left; const y = clientY - rect.top;
         const ripple = document.createElement('span');
         ripple.classList.add('ripple');
         ripple.style.left = `${x}px`; ripple.style.top = `${y}px`;
+        
         const size = Math.max(this.clientWidth, this.clientHeight);
         ripple.style.width = ripple.style.height = `${size}px`;
+        
         this.appendChild(ripple);
         setTimeout(() => { ripple.remove(); }, 600); 
     });
@@ -75,7 +83,7 @@ window.addEventListener('load', function() {
 });
 
 // ==========================================
-// 3. TILT EFFECT & MODAL
+// 3. TILT EFFECT, MODAL, FAQ
 // ==========================================
 const portfolioCards = document.querySelectorAll('.portfolio-item');
 const modal = document.getElementById('imageModal');
@@ -108,6 +116,16 @@ function showToast(message) {
     const toast = document.getElementById('toastNotification');
     if(toast) { toast.innerText = message; toast.className = 'toast-show'; setTimeout(() => { toast.className = 'toast-hidden'; }, 3000); }
 }
+
+const faqQuestions = document.querySelectorAll('.faq-question');
+faqQuestions.forEach(question => {
+    question.addEventListener('click', () => {
+        question.classList.toggle('active');
+        const answer = question.nextElementSibling;
+        if (question.classList.contains('active')) { answer.style.maxHeight = answer.scrollHeight + "px"; } 
+        else { answer.style.maxHeight = 0; }
+    });
+});
 
 // ==========================================
 // 4. FORM LOGIC, KALKULATOR & KEAMANAN
@@ -154,7 +172,7 @@ if (orderForm) {
         submitBtn.style.opacity = "0.7"; 
         submitBtn.disabled = true;
 
-        // Simulasi loading 0.8 detik agar terkesan sistem sedang bekerja
+        // Simulasi loading 0.8 detik
         setTimeout(() => {
             const enc = encodeURIComponent;
             window.location.href = `invoice.html?nama=${enc(namaAman)}&paket=${enc(paketTeks)}&jumlah=${enc(jumlahBarangInput.value)}&total=${enc(totalHarga)}&link=${enc(linkAmanText)}`;
