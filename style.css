@@ -1,4 +1,6 @@
-/* PENGATURAN DASAR & CSS VARIABLES */
+/* =========================================
+   PENGATURAN DASAR & CSS VARIABLES
+   ========================================= */
 :root {
     --bg-color: #000000;
     --text-color: #FFFFFF;
@@ -74,8 +76,6 @@ a { text-decoration: none; color: inherit; }
 }
 header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; padding: 1rem 2rem; }
 .logo { font-size: 1.5rem; font-weight: 900; letter-spacing: 1px; }
-nav a { font-weight: 300; opacity: 0.7; transition: all 0.3s; }
-nav a:hover { opacity: 1; color: var(--text-color); }
 
 /* HERO SECTION & QUEUE BADGE */
 .text-gradient { background: linear-gradient(90deg, var(--text-color), var(--text-muted)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
@@ -206,32 +206,23 @@ footer { text-align: center; padding: 2rem; opacity: 0.5; font-size: 0.8rem; fon
 
 @media (max-width: 768px) {
     .container { padding: 1rem; }
-    
     header { 
         flex-direction: column; 
         gap: 1.5rem; 
         padding: 1.5rem 1rem; 
         text-align: center; 
     }
-    nav { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
-    nav ul { flex-wrap: wrap; justify-content: center; gap: 1.2rem; width: 100%; }
-    
     .hero { text-align: center; display: flex; flex-direction: column; align-items: center; }
     .hero h1 { font-size: 2.6rem; margin-bottom: 0.8rem; }
     .hero p { font-size: 1rem; margin-bottom: 2rem; }
-    
     .glass-panel { padding: 1.5rem; margin-bottom: 1.5rem; }
     .section-title { font-size: 1.6rem; }
-    
     .pricing-grid, .portfolio-grid { grid-template-columns: 1fr; }
-    
     .form-input { font-size: 0.95rem; padding: 0.8rem; }
     .btn-solid { width: 100%; text-align: center; padding: 1rem; }
-    
     .modal-content { max-width: 95%; }
     .modal-content img { max-height: 65vh; }
     .modal-close { top: -45px; right: 0; font-size: 2rem; }
-    
     .container[style*="max-width: 600px"] { margin-top: 2rem !important; }
 }
 
