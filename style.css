@@ -51,22 +51,33 @@ body.light-mode .cursor-outline.hovered { background-color: rgba(0, 0, 0, 0.05);
 .fade-out { opacity: 0 !important; visibility: hidden !important; }
 
 /* =========================================
-   LAYOUT & GLASS PANELS
+   AURORA AMBIENT BACKGROUND & PAGE TRANSITION
+   ========================================= */
+.ambient-background { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 0; overflow: hidden; pointer-events: none; }
+.blob { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.4; animation: drift 15s infinite alternate ease-in-out; }
+.blob-1 { width: 400px; height: 400px; background: #10B981; top: -10%; left: -10%; }
+.blob-2 { width: 500px; height: 500px; background: #6366F1; bottom: -20%; right: -10%; animation-delay: -5s; }
+body.light-mode .blob { opacity: 0.2; }
+@keyframes drift { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(100px, 150px) scale(1.2); } }
+
+.page-transition { position: fixed; top: 0; left: -100%; width: 100vw; height: 100vh; background: var(--text-color); z-index: 9999999; transition: left 0.8s cubic-bezier(0.77, 0, 0.175, 1); }
+.page-transition.slide-in { left: 0; }
+.page-transition.slide-out { left: 100%; }
+
+/* =========================================
+   ANIMASI TEMA (VIEW TRANSITIONS API)
+   ========================================= */
+::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+::view-transition-old(root) { z-index: 1; }
+::view-transition-new(root) { z-index: 2; }
+
+/* =========================================
+   LAYOUT, GLASS PANELS & SPOTLIGHT
    ========================================= */
 .container { max-width: 1000px; margin: 0 auto; padding: 2rem; position: relative; z-index: 1; }
-.glass-panel { 
-    background: var(--glass-bg); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); 
-    border: 1px solid var(--glass-border); border-radius: 20px; box-shadow: 0 15px 35px var(--glass-shadow); 
-    padding: 2.5rem; margin-bottom: 2rem; transition: background 0.4s ease, border-color 0.4s ease; 
-}
-
-/* SPOTLIGHT GLOW EFFECT PADA KARTU */
+.glass-panel { background: var(--glass-bg); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid var(--glass-border); border-radius: 20px; box-shadow: 0 15px 35px var(--glass-shadow); padding: 2.5rem; margin-bottom: 2rem; transition: background 0.4s ease, border-color 0.4s ease; }
 .spotlight-card { position: relative; overflow: hidden; }
-.spotlight-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.06), transparent 40%);
-    z-index: 0; pointer-events: none; opacity: 0; transition: opacity 0.5s ease;
-}
+.spotlight-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.06), transparent 40%); z-index: 0; pointer-events: none; opacity: 0; transition: opacity 0.5s ease; }
 body.light-mode .spotlight-card::before { background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(0, 0, 0, 0.04), transparent 40%); }
 .spotlight-card:hover::before { opacity: 1; }
 .card-content-z { position: relative; z-index: 2; } 
@@ -82,8 +93,8 @@ header { display: flex; justify-content: space-between; align-items: center; mar
 .hero { text-align: left; position: relative; }
 .hero h1 { font-size: 4.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 1.2rem; position: relative; z-index: 2;}
 .hero p { font-size: 1.1rem; font-weight: 300; color: var(--text-muted); margin-bottom: 2.5rem; max-width: 550px; position: relative; z-index: 2;}
-.queue-badge { display: inline-flex; align-items: center; gap: 12px; background: rgba(16, 185, 129, 0.1); padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 500; margin-bottom: 2rem; border: 1px solid rgba(16, 185, 129, 0.3); color: var(--accent); position: relative; z-index: 2;}
-.pulse-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); animation: pulse-animation 2s infinite; }
+.queue-badge { display: inline-flex; align-items: center; gap: 12px; background: rgba(16, 185, 129, 0.1); padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 500; margin-bottom: 2rem; border: 1px solid rgba(16, 185, 129, 0.3); color: var(--accent); position: relative; z-index: 2; transition: all 0.3s;}
+.pulse-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); animation: pulse-animation 2s infinite; transition: all 0.3s;}
 
 /* =========================================
    INFINITE MARQUEE TICKER
@@ -122,17 +133,9 @@ header { display: flex; justify-content: space-between; align-items: center; mar
 /* =========================================
    MAGNETIC BUTTON & RIPPLE
    ========================================= */
-.magnetic-btn { 
-    display: inline-block; position: relative; overflow: hidden; z-index: 2;
-    background: var(--btn-bg); color: var(--btn-text); font-weight: 700; padding: 1rem 3rem; 
-    border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; 
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s; 
-}
+.magnetic-btn { display: inline-block; position: relative; overflow: hidden; z-index: 2; background: var(--btn-bg); color: var(--btn-text); font-weight: 700; padding: 1rem 3rem; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s; }
 .magnetic-btn:hover { background: var(--btn-hover); box-shadow: 0 10px 30px rgba(255,255,255,0.2); }
-.ripple {
-    position: absolute; border-radius: 50%; transform: scale(0);
-    animation: ripple-anim 0.6s linear; background: rgba(0, 0, 0, 0.15); pointer-events: none;
-}
+.ripple { position: absolute; border-radius: 50%; transform: scale(0); animation: ripple-anim 0.6s linear; background: rgba(0, 0, 0, 0.15); pointer-events: none; }
 body.light-mode .ripple { background: rgba(255, 255, 255, 0.4); }
 @keyframes ripple-anim { to { transform: scale(4); opacity: 0; } }
 
@@ -140,10 +143,7 @@ body.light-mode .ripple { background: rgba(255, 255, 255, 0.4); }
    FORM FLOATING LABEL & FAQ
    ========================================= */
 .input-group { position: relative; margin-top: 0.5rem; }
-.form-input { 
-    width: 100%; padding: 1.5rem 1.2rem 0.8rem; border-radius: 12px; border: 1px solid var(--glass-border); 
-    background: var(--input-bg); color: var(--text-color); outline: none; font-size: 1rem; transition: border-color 0.3s, background 0.3s; 
-}
+.form-input { width: 100%; padding: 1.5rem 1.2rem 0.8rem; border-radius: 12px; border: 1px solid var(--glass-border); background: var(--input-bg); color: var(--text-color); outline: none; font-size: 1rem; transition: border-color 0.3s, background 0.3s; }
 .form-input:focus { border-color: var(--text-color); background: rgba(255,255,255,0.05); }
 .floating-label { position: absolute; left: 1.2rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); pointer-events: none; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); font-weight: 300; }
 .form-input:focus ~ .floating-label, .form-input:not(:placeholder-shown) ~ .floating-label, .active-label { top: 0.8rem; font-size: 0.75rem; color: var(--text-color); opacity: 0.7; font-weight: 500; }
@@ -193,12 +193,11 @@ body.light-mode .ripple { background: rgba(255, 255, 255, 0.4); }
 }
 @media (max-width: 480px) { .hero h1 { font-size: 2.2rem; } }
 
-/* Matikan kursor kustom dan tambahkan efek HP */
+/* Matikan kursor kustom dan tambahkan efek sentuh (Tactile) di HP */
 @media (hover: none) and (pointer: coarse) {
     * { cursor: auto !important; } 
     .cursor-dot, .cursor-outline { display: none !important; }
     
-    /* Squish animation saat ditekan (Mobile Tactile) */
     .btn-solid:active, .portfolio-item:active, .price-card:active, .timeline-step:active {
         transform: scale(0.96) !important;
         transition: transform 0.1s ease;
