@@ -9,10 +9,12 @@
     <script>if (localStorage.getItem('theme') === 'light') document.documentElement.classList.add('light-mode');</script>
 </head>
 <body class="light-mode-sync">
-    <!-- Kursor Custom -->
+    <!-- Kursor & Tirai Pembuka Halaman -->
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
+    <div class="page-transition slide-in" id="curtain"></div>
 
+    <div class="ambient-background"><div class="blob blob-1"></div><div class="blob blob-2"></div></div>
     <div id="loading-screen"><div class="loader-ring"></div><div class="loader-text">STUDIO</div></div>
 
     <div class="container" style="max-width: 600px; margin-top: 5rem;">
@@ -35,16 +37,13 @@
 
                 <div class="reveal" style="margin-bottom: 1.5rem; background: var(--input-bg); padding: 2rem 1.5rem; border-radius: 12px; border: 1px solid var(--glass-border);">
                     <h3 style="font-size: 1.1rem; margin-bottom: 1.5rem; font-weight: 500;">Metode Pembayaran (QRIS)</h3>
-                    
                     <div style="background: #FFFFFF; padding: 15px; border-radius: 12px; display: inline-block; margin-bottom: 2rem; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
                         <!-- GANTI DENGAN GAMBAR QRIS ASLI ANDA -->
                         <img src="https://via.placeholder.com/250x250/FFFFFF/000000?text=GAMBAR+QRIS+ANDA" alt="Scan QRIS" class="hover-target" style="width: 250px; height: 250px; object-fit: contain;">
                     </div>
-
                     <button id="btnKonfirmasi" class="btn-solid btn-action hover-target magnetic-btn" style="width: 100%; border: none; cursor: pointer; margin-bottom: 2rem;">
                         Sudah Memverifikasi Pembayaran
                     </button>
-
                     <div style="border-top: 1px solid var(--glass-border); padding-top: 1.5rem; text-align: left;">
                         <p style="font-weight: 300; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">Atau transfer manual ke:</p>
                         <p style="font-weight: 500; font-size: 0.95rem; margin-bottom: 0.2rem;">BCA: 1234567890 a.n. Kreator Studio</p>
@@ -52,16 +51,31 @@
                     </div>
                 </div>
 
-                <a href="index.html" class="reveal hover-target" style="font-size: 0.8rem; text-decoration: underline; opacity: 0.6; display: inline-block; margin-top: 0.5rem;">Batalkan pesanan & Kembali</a>
+                <button onclick="goBack()" class="reveal hover-target" style="font-size: 0.8rem; text-decoration: underline; opacity: 0.6; display: inline-block; margin-top: 0.5rem; background:none; border:none; color:var(--text-color); cursor:pointer;">Batalkan pesanan & Kembali</button>
             </div>
         </div>
     </div>
 
-    <!-- Script Vanilla murni -->
     <script src="script.js"></script>
     <script>
         if (localStorage.getItem('theme') === 'light') document.body.classList.add('light-mode');
         
+        // Membuka Tirai Transisi Saat Halaman Dimuat
+        window.addEventListener('load', () => {
+            const curtain = document.getElementById('curtain');
+            setTimeout(() => { if(curtain) curtain.classList.add('slide-out'); }, 100);
+        });
+
+        // Transisi Halus Saat Kembali
+        function goBack() {
+            const curtain = document.getElementById('curtain');
+            if(curtain) {
+                curtain.classList.remove('slide-out');
+                curtain.classList.add('slide-in');
+            }
+            setTimeout(() => { window.location.href = 'index.html'; }, 800);
+        }
+
         const urlParams = new URLSearchParams(window.location.search);
         const nama = urlParams.get('nama');
         const paket = urlParams.get('paket');
@@ -70,7 +84,6 @@
         const linkRef = urlParams.get('link');
 
         if(!nama || !total) window.location.href = 'index.html';
-        
         const totalRupiah = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(total);
 
         document.getElementById('invNama').innerText = nama;
@@ -80,19 +93,22 @@
         
         const linkElement = document.getElementById('invLink');
         if (linkRef && linkRef !== "Tidak ada") {
-            linkElement.innerText = linkRef; 
-            linkElement.href = linkRef;
+            linkElement.innerText = linkRef; linkElement.href = linkRef;
         } else {
             linkElement.innerText = "Tidak dilampirkan";
-            linkElement.style.color = "var(--text-muted)"; 
-            linkElement.style.textDecoration = "none";
+            linkElement.style.color = "var(--text-muted)"; linkElement.style.textDecoration = "none";
             linkElement.classList.remove('hover-target'); 
         }
 
         document.getElementById('btnKonfirmasi').addEventListener('click', function() {
-            const pesan = `Halo! Saya sudah melakukan pembayaran komisi 2D Illustration.%0A%0A*Atas Nama:* ${nama}%0A*Paket:* ${paket}%0A*Total Pembayaran:* ${totalRupiah}%0A*Link Referensi Karakter:* ${linkRef}%0A%0ABerikut saya lampirkan bukti transfer/scan QRIS-nya.`;
-            window.open(`https://wa.me/6285168655896?text=${pesan}`, '_blank');
-            window.location.href = 'success.html';
+            const curtain = document.getElementById('curtain');
+            if(curtain) { curtain.classList.remove('slide-out'); curtain.classList.add('slide-in'); }
+            
+            setTimeout(() => {
+                const pesan = `Halo! Saya sudah melakukan pembayaran komisi 2D Illustration.%0A%0A*Atas Nama:* ${nama}%0A*Paket:* ${paket}%0A*Total Pembayaran:* ${totalRupiah}%0A*Link Referensi Karakter:* ${linkRef}%0A%0ABerikut saya lampirkan bukti transfer/scan QRIS-nya.`;
+                window.open(`https://wa.me/6285168655896?text=${pesan}`, '_blank');
+                window.location.href = 'success.html';
+            }, 800);
         });
     </script>
 </body>
