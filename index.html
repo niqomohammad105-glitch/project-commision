@@ -12,6 +12,15 @@
     <!-- Custom Fluid Cursor -->
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
+
+    <!-- Page Transition Curtain -->
+    <div class="page-transition"></div>
+
+    <!-- Aurora Animated Background -->
+    <div class="ambient-background">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
     
     <!-- Loading Screen -->
     <div id="loading-screen"><div class="loader-ring"></div><div class="loader-text">STUDIO</div></div>
@@ -27,10 +36,12 @@
 
         <!-- Hero Section -->
         <div class="glass-panel hero spotlight-card">
+            <!-- ID slotBadge untuk Google Sheets -->
             <div class="queue-badge reveal">
-                <span class="pulse-dot"></span> Open Commission: 3/5 Slots Available
+                <span class="pulse-dot"></span> <span id="slotBadge">Memuat slot...</span>
             </div>
-            <h1 class="reveal cinematic-text">Bring your<br><span class="text-gradient">characters to life.</span></h1>
+            <!-- Cyberpunk Text Scramble -->
+            <h1 class="reveal cinematic-text scramble-text" data-text="Bring your characters to life.">Bring your characters to life.</h1>
             <p class="reveal delay-1">Menerima jasa ilustrasi 2D eksklusif. Spesialisasi dalam desain karakter full color dengan detail yang tajam dan resolusi tinggi untuk kebutuhan personal Anda.</p>
             <a href="#pemesanan" class="btn-solid btn-hero reveal delay-2 hover-target magnetic-btn">Pesan Sekarang</a>
         </div>
