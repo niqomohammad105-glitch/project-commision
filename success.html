@@ -9,10 +9,11 @@
     <script>if (localStorage.getItem('theme') === 'light') document.documentElement.classList.add('light-mode');</script>
 </head>
 <body>
-    <!-- Kursor Custom -->
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
+    <div class="page-transition slide-in" id="curtain"></div>
     
+    <div class="ambient-background"><div class="blob blob-1"></div><div class="blob blob-2"></div></div>
     <div id="loading-screen"><div class="loader-ring"></div><div class="loader-text">STUDIO</div></div>
 
     <div class="container" style="max-width: 600px; margin-top: 8rem; text-align: center;">
@@ -23,11 +24,23 @@
                 <p style="font-weight: 300; color: var(--text-muted); margin-bottom: 2.5rem; line-height: 1.6;">
                     Pesanan Ilustrasi 2D Anda telah kami rekap. Silakan selesaikan konfirmasi pengiriman bukti transfer di WhatsApp dan kami akan segera menghubungi Anda.
                 </p>
-                <a href="index.html" class="btn-solid hover-target magnetic-btn" style="font-size: 0.9rem;">Kembali ke Beranda</a>
+                <button onclick="goHome()" class="btn-solid hover-target magnetic-btn" style="font-size: 0.9rem; border:none; cursor:pointer;">Kembali ke Beranda</button>
             </div>
         </div>
     </div>
     
     <script src="script.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            const curtain = document.getElementById('curtain');
+            setTimeout(() => { if(curtain) curtain.classList.add('slide-out'); }, 100);
+        });
+
+        function goHome() {
+            const curtain = document.getElementById('curtain');
+            if(curtain) { curtain.classList.remove('slide-out'); curtain.classList.add('slide-in'); }
+            setTimeout(() => { window.location.href = 'index.html'; }, 800);
+        }
+    </script>
 </body>
 </html>
