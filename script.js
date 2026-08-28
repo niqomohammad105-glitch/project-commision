@@ -1,5 +1,36 @@
 // ==========================================
-// 1. MAGNETIC BUTTON, RIPPLE & HAPTIC FEEDBACK
+// 1. UPDATE SLOT OTOMATIS VIA GOOGLE SHEETS
+// ==========================================
+async function updateSlotKomisi() {
+    // GANTI TAUTAN DI BAWAH INI dengan link CSV dari Google Sheets Anda
+    const sheetURL = 'URL_CSV_ANDA_DI_SINI'; 
+    const badgeElement = document.getElementById('slotBadge');
+    if (!badgeElement) return;
+
+    try {
+        const response = await fetch(sheetURL);
+        const data = await response.text();
+        const [terisi, maksimal] = data.split(',');
+        const sisaSlot = parseInt(maksimal) - parseInt(terisi);
+
+        if (sisaSlot > 0) {
+            badgeElement.innerHTML = `Open Commission: ${sisaSlot} Slots Available`;
+            document.querySelector('.pulse-dot').style.background = 'var(--accent)';
+            document.querySelector('.pulse-dot').style.boxShadow = '0 0 10px var(--accent)';
+        } else {
+            badgeElement.innerHTML = `Commissions Full (Closed)`;
+            document.querySelector('.pulse-dot').style.background = '#EF4444';
+            document.querySelector('.pulse-dot').style.boxShadow = '0 0 10px #EF4444';
+        }
+    } catch (error) {
+        console.error("Gagal memuat slot, menggunakan nilai fallback", error);
+        badgeElement.innerHTML = `Open Commission: 3/5 Slots Available`;
+    }
+}
+window.addEventListener('load', updateSlotKomisi);
+
+// ==========================================
+// 2. MAGNETIC BUTTON, RIPPLE & HAPTIC FEEDBACK
 // ==========================================
 const magneticBtns = document.querySelectorAll('.magnetic-btn');
 magneticBtns.forEach(btn => {
@@ -17,18 +48,15 @@ magneticBtns.forEach(btn => {
     });
 
     btn.addEventListener('click', function(e) {
-        // Haptic Feedback (Getar) untuk pengguna HP
-        if (navigator.vibrate) { navigator.vibrate(50); }
-
+        if (navigator.vibrate) { navigator.vibrate(50); } // Haptic feedback untuk HP
         const rect = e.target.getBoundingClientRect();
         const clientX = e.touches ? e.touches[0].clientX : e.clientX;
         const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-        
         const x = clientX - rect.left; const y = clientY - rect.top;
+        
         const ripple = document.createElement('span');
         ripple.classList.add('ripple');
         ripple.style.left = `${x}px`; ripple.style.top = `${y}px`;
-        
         const size = Math.max(this.clientWidth, this.clientHeight);
         ripple.style.width = ripple.style.height = `${size}px`;
         
@@ -48,7 +76,7 @@ spotlightCards.forEach(card => {
 });
 
 // ==========================================
-// 2. KURSOR KUSTOM & THEME LOGIC
+// 3. KURSOR KUSTOM
 // ==========================================
 const cursorDot = document.querySelector('.cursor-dot');
 const cursorOutline = document.querySelector('.cursor-outline');
@@ -65,25 +93,99 @@ hoverTargets.forEach(target => {
     target.addEventListener('mouseleave', () => { if(cursorOutline) cursorOutline.classList.remove('hovered'); });
 });
 
+// ==========================================
+// 4. ANIMASI TEMA (VIEW TRANSITIONS API)
+// ==========================================
 const themeToggleBtn = document.getElementById('themeToggle');
 const body = document.body;
 
-if (localStorage.getItem('theme') === 'light') { body.classList.add('light-mode'); if (themeToggleBtn) themeToggleBtn.innerText = '🌙 Gelap'; }
+function updateThemeUI() {
+    if (body.classList.contains('light-mode')) { 
+        localStorage.setItem('theme', 'light'); 
+        if (themeToggleBtn) themeToggleBtn.innerHTML = '🌙 Gelap'; 
+    } else { 
+        localStorage.setItem('theme', 'dark'); 
+        if (themeToggleBtn) themeToggleBtn.innerHTML = '☀️ Terang'; 
+    }
+}
+
+if (localStorage.getItem('theme') === 'light') { body.classList.add('light-mode'); updateThemeUI(); }
+
 if (themeToggleBtn) {
-    themeToggleBtn.addEventListener('click', () => {
-        body.classList.toggle('light-mode');
-        if (body.classList.contains('light-mode')) { localStorage.setItem('theme', 'light'); themeToggleBtn.innerText = '🌙 Gelap'; } 
-        else { localStorage.setItem('theme', 'dark'); themeToggleBtn.innerText = '☀️ Terang'; }
+    themeToggleBtn.addEventListener('click', (e) => {
+        if (!document.startViewTransition) {
+            body.classList.toggle('light-mode'); updateThemeUI(); return;
+        }
+        const x = e.clientX; const y = e.clientY;
+        const endRadius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+
+        const transition = document.startViewTransition(() => {
+            body.classList.toggle('light-mode'); updateThemeUI();
+        });
+
+        transition.ready.then(() => {
+            document.documentElement.animate(
+                { clipPath: [ `circle(0px at ${x}px ${y}px)`, `circle(${endRadius}px at ${x}px ${y}px)` ] },
+                { duration: 600, easing: 'ease-out', pseudoElement: '::view-transition-new(root)' }
+            );
+        });
     });
+}
+
+// ==========================================
+// 5. CYBERPUNK TEXT SCRAMBLE
+// ==========================================
+class TextScramble {
+    constructor(el) {
+        this.el = el; this.chars = '!<>-_\\/[]{}—=+*^?#________'; this.update = this.update.bind(this);
+    }
+    setText(newText) {
+        const oldText = this.el.innerText;
+        const length = Math.max(oldText.length, newText.length);
+        const promise = new Promise((resolve) => this.resolve = resolve);
+        this.queue = [];
+        for (let i = 0; i < length; i++) {
+            const from = oldText[i] || ''; const to = newText[i] || '';
+            const start = Math.floor(Math.random() * 40);
+            const end = start + Math.floor(Math.random() * 40);
+            this.queue.push({ from, to, start, end });
+        }
+        cancelAnimationFrame(this.frameRequest);
+        this.frame = 0; this.update(); return promise;
+    }
+    update() {
+        let output = ''; let complete = 0;
+        for (let i = 0, n = this.queue.length; i < n; i++) {
+            let { from, to, start, end, char } = this.queue[i];
+            if (this.frame >= end) { complete++; output += to; } 
+            else if (this.frame >= start) {
+                if (!char || Math.random() < 0.28) { char = this.randomChar(); this.queue[i].char = char; }
+                output += `<span style="opacity: 0.5;">${char}</span>`;
+            } else { output += from; }
+        }
+        this.el.innerHTML = output;
+        if (complete === this.queue.length) { this.resolve(); } 
+        else { this.frameRequest = requestAnimationFrame(this.update); this.frame++; }
+    }
+    randomChar() { return this.chars[Math.floor(Math.random() * this.chars.length)]; }
 }
 
 window.addEventListener('load', function() {
     const loader = document.getElementById('loading-screen');
-    if (loader) { setTimeout(() => { loader.classList.add('fade-out'); }, 500); }
+    if (loader) { 
+        setTimeout(() => { 
+            loader.classList.add('fade-out'); 
+            // Mulai text scramble setelah loading
+            setTimeout(() => {
+                const el = document.querySelector('.scramble-text');
+                if (el) { const fx = new TextScramble(el); fx.setText(el.getAttribute('data-text')); }
+            }, 300);
+        }, 500); 
+    }
 });
 
 // ==========================================
-// 3. TILT EFFECT, MODAL, FAQ
+// 6. TILT EFFECT, MODAL & SCROLL REVEAL
 // ==========================================
 const portfolioCards = document.querySelectorAll('.portfolio-item');
 const modal = document.getElementById('imageModal');
@@ -112,10 +214,11 @@ portfolioCards.forEach(card => {
 if(closeModalBtn) closeModalBtn.addEventListener('click', () => modal.classList.remove('modal-show'));
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal) modal.classList.remove('modal-show'); });
 
-function showToast(message) {
-    const toast = document.getElementById('toastNotification');
-    if(toast) { toast.innerText = message; toast.className = 'toast-show'; setTimeout(() => { toast.className = 'toast-hidden'; }, 3000); }
-}
+const revealElements = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); observer.unobserve(entry.target); } });
+}, { root: null, threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
+revealElements.forEach(el => { revealObserver.observe(el); });
 
 const faqQuestions = document.querySelectorAll('.faq-question');
 faqQuestions.forEach(question => {
@@ -127,8 +230,13 @@ faqQuestions.forEach(question => {
     });
 });
 
+function showToast(message) {
+    const toast = document.getElementById('toastNotification');
+    if(toast) { toast.innerText = message; toast.className = 'toast-show'; setTimeout(() => { toast.className = 'toast-hidden'; }, 3000); }
+}
+
 // ==========================================
-// 4. FORM LOGIC, KALKULATOR & KEAMANAN
+// 7. FORM LOGIC & PAGE TRANSITION CURTAIN
 // ==========================================
 const orderForm = document.getElementById('orderForm');
 const namaPembeliInput = document.getElementById('namaPembeli');
@@ -145,20 +253,14 @@ function hitungTotal() {
     if (total < 1 || isNaN(total)) { totalHargaDisplay.innerText = "Tidak valid"; return; }
     totalHargaDisplay.innerText = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(total);
 }
-
-if (pilihanPaketInput && jumlahBarangInput) {
-    pilihanPaketInput.addEventListener('change', hitungTotal);
-    jumlahBarangInput.addEventListener('input', hitungTotal);
-}
+if (pilihanPaketInput && jumlahBarangInput) { pilihanPaketInput.addEventListener('change', hitungTotal); jumlahBarangInput.addEventListener('input', hitungTotal); }
 
 if (orderForm) {
     orderForm.setAttribute('novalidate', true); 
-    
     orderForm.addEventListener('submit', function(event) {
         event.preventDefault(); 
         
         if (tosCheckbox && !tosCheckbox.checked) { showToast("Sistem: Harap centang persetujuan ToS."); return; }
-
         let namaAman = namaPembeliInput.value.trim().replace(/[^a-zA-Z0-9 ]/g, "");
         if (namaAman === "") { showToast("Sistem: Masukkan nama tanpa karakter khusus."); return; }
 
@@ -166,25 +268,16 @@ if (orderForm) {
         const totalHarga = parseInt(pilihanPaketInput.value) * parseInt(jumlahBarangInput.value);
         let linkAmanText = linkReferensiInput.value.trim() ? linkReferensiInput.value.trim() : "Tidak ada";
 
-        // Animasi UI tombol saat diklik
-        const teksAsli = submitBtn.innerText;
-        submitBtn.innerText = "Memproses..."; 
-        submitBtn.style.opacity = "0.7"; 
-        submitBtn.disabled = true;
+        submitBtn.innerText = "Memproses..."; submitBtn.style.opacity = "0.7"; submitBtn.disabled = true;
 
-        // Simulasi loading 0.8 detik
+        // 1. Munculkan tirai transisi halaman
+        const transitionCurtain = document.querySelector('.page-transition');
+        if(transitionCurtain) transitionCurtain.classList.add('slide-in');
+
+        // 2. Pindah ke invoice setelah tirai menutupi layar (0.8 detik)
         setTimeout(() => {
             const enc = encodeURIComponent;
             window.location.href = `invoice.html?nama=${enc(namaAman)}&paket=${enc(paketTeks)}&jumlah=${enc(jumlahBarangInput.value)}&total=${enc(totalHarga)}&link=${enc(linkAmanText)}`;
         }, 800);
     });
 }
-
-// ==========================================
-// 5. CINEMATIC SCROLL REVEAL
-// ==========================================
-const revealElements = document.querySelectorAll('.reveal');
-const revealObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); observer.unobserve(entry.target); } });
-}, { root: null, threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
-revealElements.forEach(el => { revealObserver.observe(el); });
