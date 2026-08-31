@@ -3,44 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pesanan Berhasil | 2D Studio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <title>Pesanan Berhasil - ArtisanVault</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Link CSS yang Sama -->
     <link rel="stylesheet" href="style.css">
-    <script>if (localStorage.getItem('theme') === 'light') document.documentElement.classList.add('light-mode');</script>
 </head>
 <body>
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
-    <div class="page-transition slide-in" id="curtain"></div>
-    
-    <div class="ambient-background"><div class="blob blob-1"></div><div class="blob blob-2"></div></div>
-    <div id="loading-screen"><div class="loader-ring"></div><div class="loader-text">STUDIO</div></div>
 
-    <div class="container" style="max-width: 600px; margin-top: 8rem; text-align: center;">
-        <div class="glass-panel reveal spotlight-card">
-            <div class="card-content-z">
-                <div style="font-size: 5rem; color: var(--accent); margin-bottom: 1rem; text-shadow: 0 0 20px var(--accent);">✓</div>
-                <h1 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">Terima Kasih!</h1>
-                <p style="font-weight: 300; color: var(--text-muted); margin-bottom: 2.5rem; line-height: 1.6;">
-                    Pesanan Ilustrasi 2D Anda telah kami rekap. Silakan selesaikan konfirmasi pengiriman bukti transfer di WhatsApp dan kami akan segera menghubungi Anda.
-                </p>
-                <button onclick="goHome()" class="btn-solid hover-target magnetic-btn" style="font-size: 0.9rem; border:none; cursor:pointer;">Kembali ke Beranda</button>
-            </div>
+    <!-- Header / Navbar -->
+    <header class="header">
+        <div class="container header-nav">
+            <a href="index.html" class="brand-logo">
+                <div class="logo-badge">A</div>
+                <span>ArtisanVault</span>
+            </a>
+            <a href="index.html" class="btn btn-outline">Kembali ke Katalog</a>
         </div>
-    </div>
-    
-    <script src="script.js"></script>
-    <script>
-        window.addEventListener('load', () => {
-            const curtain = document.getElementById('curtain');
-            setTimeout(() => { if(curtain) curtain.classList.add('slide-out'); }, 100);
-        });
+    </header>
 
-        function goHome() {
-            const curtain = document.getElementById('curtain');
-            if(curtain) { curtain.classList.remove('slide-out'); curtain.classList.add('slide-in'); }
-            setTimeout(() => { window.location.href = 'index.html'; }, 800);
-        }
+    <main class="success-container">
+        <div class="success-card">
+            
+            <div class="success-icon-badge">✓</div>
+            
+            <h1 class="section-title">Pesanan Berhasil Diajukan!</h1>
+            <p class="section-desc" style="margin-bottom: 0;">Terima kasih telah memesan. Brief komisi gambarmu telah kami terima dan masuk ke dalam antrean studio.</p>
+
+            <!-- Rincian Pesanan Dinamis -->
+            <div class="order-receipt">
+                <div class="receipt-item">
+                    <span>Nomor Tiket:</span>
+                    <strong id="displayOrderId">ART-928123</strong>
+                </div>
+                <div class="receipt-item">
+                    <span>Pemesan:</span>
+                    <strong id="displayName">-</strong>
+                </div>
+                <div class="receipt-item">
+                    <span>Kontak Pengiriman:</span>
+                    <strong id="displayContact">-</strong>
+                </div>
+                <div class="receipt-item">
+                    <span>Paket Komisi:</span>
+                    <strong id="displayPackage">-</strong>
+                </div>
+                <div class="receipt-item total-row">
+                    <span>Estimasi Biaya:</span>
+                    <strong id="displayTotal">Rp 0</strong>
+                </div>
+            </div>
+
+            <p style="font-size: 0.8rem; color: var(--muted-foreground); margin-bottom: 24px;">
+                Kami akan menghubungi kontak WhatsApp/Email kamu dalam 1x24 jam untuk pengiriman sketsa konsep awal (rough draft).
+            </p>
+
+            <a href="index.html" class="btn btn-primary" style="width: 100%;">Buat Pesanan Lain</a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 ArtisanVault. Digital Art Commission Marketplace.</p>
+    </footer>
+
+    <!-- Logic untuk Membaca Data Pesanan -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedData = sessionStorage.getItem('orderSummary');
+            if (savedData) {
+                const order = JSON.parse(savedData);
+                document.getElementById('displayOrderId').textContent = order.orderId;
+                document.getElementById('displayName').textContent = order.buyerName;
+                document.getElementById('displayContact').textContent = order.buyerContact;
+                document.getElementById('displayPackage').textContent = order.packageName;
+                document.getElementById('displayTotal').textContent = order.total;
+            }
+        });
     </script>
 </body>
 </html>
